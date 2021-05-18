@@ -2,6 +2,8 @@ package ui;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -27,7 +29,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage myStage) throws Exception{
-        myStage.setTitle("Chernova+Mikhalenko=2048");
+
+        Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
+        myStage.setTitle("2048 GAME");
+        myStage.setScene(new Scene(root, 500, 400));
+        myStage.show();
+    }
+
+    public void levels(Stage myStage) throws Exception{
+        myStage.setTitle("Chernova+Mykhailenko=2048");
 
         FlowPane rootNode = new FlowPane();
         rootNode.getStyleClass().add("bg-sea-style");
@@ -72,7 +82,7 @@ public class Main extends Application {
                 if (keyEvent.getCode() == KeyCode.F8) {
                     logic.addCellEight();
                 }
-               // logic.relocate(330, 390);
+                // logic.relocate(330, 390);
             }
         });
 
