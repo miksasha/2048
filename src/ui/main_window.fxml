@@ -26,7 +26,7 @@
                 <Button layoutX="44.0" layoutY="141.0" mnemonicParsing="false" onAction="#onClickFour" styleClass="buttons" text="4 level" />
                 <Button layoutX="308.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickFive" styleClass="buttons" text="5 level" />
             </children></AnchorPane>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="panel" stylesheets="@Style.css" GridPane.rowIndex="1">
         <buttons>
           <Button mnemonicParsing="false" styleClass="askButton" stylesheets="@Style.css" text="?">
                <font>

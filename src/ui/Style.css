@@ -5,6 +5,10 @@
     -fx-background-size: 100% 100%;
 }
 
+.panel {
+    -fx-background-color: rgb(93, 44, 44);
+}
+
 .buttons {
     -fx-background-color: transparent;
     -fx-font-size: 16px;
@@ -17,9 +21,9 @@
 
 .askButton{
     -fx-width: 100px;
-    -fx-height: 100px;
+    -fx-height: 30px;
     -fx-border: solid 1px #000;
-    -fx-border-radius: 10px 10px 10px 10px;
+    -fx-border-radius: 5px ;
 }
 
 .askButton:hover {
