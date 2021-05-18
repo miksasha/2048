@@ -21,7 +21,7 @@ import javafx.animation.AnimationTimer;
 public class Main extends Application {
     private static final String flowerURL = "img.png";
     private static final int CELL_SIZE = 80;
-    public int amoungOfLines=3;
+
     public int level=1;
     public static void main(String[] args) {
         launch(args);
@@ -33,6 +33,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("2048 GAME");
         myStage.setScene(new Scene(root, 500, 400));
+       // levels(myStage);
         myStage.show();
     }
 
@@ -100,9 +101,9 @@ public class Main extends Application {
 
                 gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
 
-                for(int y = 0; y < 4; y++) {
-                    for(int x = 0; x < 4; x++){
-                        Cell cell = logic.getAllcells()[x + y * 4];
+                for(int y = 0; y < logic.amoungOfLines; y++) {
+                    for(int x = 0; x < logic.amoungOfLines; x++){
+                        Cell cell = logic.getAllcells()[x + y * logic.amoungOfLines];
                         int value = cell.number;
                         int xOffset = offsetCoors(x);
                         int yOffset = offsetCoors(y);
@@ -137,7 +138,7 @@ public class Main extends Application {
                             if(logic.win || logic.lose) {
                                 gc.setFont(Font.font("Verdana", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.rgb(128, 128, 128));
-                                gc.fillText("Press ESC to play again", 110, 270);
+                                gc.fillText("Press Shift to play again", 110, 270);
                             }
                         }
                         gc.setFont(Font.font("Verdana", FontWeight.LIGHT, 18));

@@ -8,7 +8,8 @@ public class Logic extends javafx.scene.canvas.Canvas {
     boolean win = false;
     boolean lose = false;
     int score = 0;
-
+    boolean reverse= false;
+int amoungOfLines =3;
     public Cell[] getAllcells() {
         return Allcells;
     }
@@ -30,7 +31,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
         score = 0;
         win = false;
         lose = false;
-        Allcells = new Cell[4 * 4];
+        Allcells = new Cell[amoungOfLines * amoungOfLines];
         for (int cell = 0; cell < Allcells.length; cell++) {
             Allcells[cell] = new Cell();
         }
@@ -87,13 +88,13 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
     private Cell cellAt(int x, int y) {
-        return Allcells[x + y * 4];
+        return Allcells[x + y * amoungOfLines];
     }
 
     protected boolean canMove() {
         if(!isFull()) return true;
-        for(int x = 0; x < 4; x++) {
-            for (int y = 0; y < 4; y++) {
+        for(int x = 0; x < amoungOfLines; x++) {
+            for (int y = 0; y < amoungOfLines; y++) {
                 Cell cell = cellAt(x, y);
                 if ((x < 3 && cell.number == cellAt(x + 1, y).number) ||
                         (y < 3) && cell.number == cellAt(x, y + 1).number) {
@@ -121,9 +122,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
     private Cell[] rotate(int angle) {
-        Cell[] tiles = new Cell[4 * 4];
-        int offsetX = 3;
-        int offsetY = 3;
+        Cell[] tiles = new Cell[amoungOfLines * amoungOfLines];
+        int offsetX = amoungOfLines-1;
+        int offsetY = amoungOfLines-1;
         if(angle == 90) {
             offsetY = 0;
         } else if(angle == 270) {
@@ -133,11 +134,11 @@ public class Logic extends javafx.scene.canvas.Canvas {
         double rad = Math.toRadians(angle);
         int cos = (int) Math.cos(rad);
         int sin = (int) Math.sin(rad);
-        for(int x = 0; x < 4; x++) {
-            for(int y = 0; y < 4; y++) {
+        for(int x = 0; x < amoungOfLines; x++) {
+            for(int y = 0; y < amoungOfLines; y++) {
                 int newX = (x*cos) - (y*sin) + offsetX;
                 int newY = (x*sin) + (y*cos) + offsetY;
-                tiles[(newX) + (newY) * 4] = cellAt(x, y);
+                tiles[(newX) + (newY) * amoungOfLines] = cellAt(x, y);
             }
         }
         return tiles;
@@ -145,7 +146,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
 
     private Cell[] moveLine(Cell[] oldLine) {
         LinkedList<Cell> list = new LinkedList<Cell>();
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < amoungOfLines; i++) {
             if(!oldLine[i].isEmpty()){
                 list.addLast(oldLine[i]);
             }
@@ -154,11 +155,11 @@ public class Logic extends javafx.scene.canvas.Canvas {
         if(list.size() == 0) {
             return oldLine;
         } else {
-            Cell[] newLine = new Cell[4];
-            while (list.size() != 4) {
+            Cell[] newLine = new Cell[amoungOfLines];
+            while (list.size() != amoungOfLines) {
                 list.add(new Cell());
             }
-            for(int j = 0; j < 4; j++) {
+            for(int j = 0; j < amoungOfLines; j++) {
                 newLine[j] = list.removeFirst();
             }
             return newLine;
@@ -167,9 +168,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
 
     private Cell[] mergeLine(Cell[] oldLine) {
         LinkedList<Cell> list = new LinkedList<Cell>();
-        for(int i = 0; i < 4 && !oldLine[i].isEmpty(); i++) {
+        for(int i = 0; i < amoungOfLines && !oldLine[i].isEmpty(); i++) {
             int num = oldLine[i].number;
-            if (i < 3 && oldLine[i].number == oldLine[i+1].number) {
+            if (i < amoungOfLines-1 && oldLine[i].number == oldLine[i+1].number) {
                 num += 10;
                 score += num;
                 if ( num == 100) {
@@ -183,28 +184,31 @@ public class Logic extends javafx.scene.canvas.Canvas {
         if(list.size() == 0) {
             return oldLine;
         } else {
-            while (list.size() != 4) {
+            while (list.size() != amoungOfLines) {
                 list.add(new Cell());
             }
-            return list.toArray(new Cell[4]);
+            return list.toArray(new Cell[amoungOfLines]);
         }
     }
 
     private Cell[] getLine(int index) {
-        Cell[] result = new Cell[4];
-        for(int i = 0; i < 4; i++) {
+        Cell[] result = new Cell[amoungOfLines];
+        for(int i = 0; i < amoungOfLines; i++) {
             result[i] = cellAt(i, index);
         }
         return result;
     }
 
     private void setLine(int index, Cell[] re) {
-        System.arraycopy(re, 0, Allcells, index * 4, 4);
+        System.arraycopy(re, 0, Allcells, index * amoungOfLines, amoungOfLines);
     }
 
     public void left() {
+        if(reverse==true){
+            boolean needAddCell = false;
+        }
         boolean needAddCell = false;
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < amoungOfLines; i++) {
             Cell[] line = getLine(i);
             Cell[] merged = mergeLine(moveLine(line));
             setLine(i, merged);
