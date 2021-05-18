@@ -58,7 +58,7 @@ public class Main extends Application {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.SHIFT) {
                     if(logic.win){level++;
-                        logic.amoungOfLines=level+1;
+                        logic.amountOfLines =level+1;
                         logic.maxNumber=level*10+10;}
                     logic.startNewGame();
                     if(logic.maxNumber>=100){
@@ -69,7 +69,7 @@ public class Main extends Application {
                     logic.CellTen();
                 }
 
-                if (!logic.canMove() || (!logic.win && !logic.canMove())) {
+                if (logic.checkIfStepIsNotAvalible() || (!logic.win && logic.checkIfStepIsNotAvalible())) {
                     logic.lose = true;
                 }
                 if (keyEvent.getCode() == KeyCode.F2) {
@@ -89,7 +89,7 @@ public class Main extends Application {
 
                 }
                 if (keyEvent.getCode() == KeyCode.F3) {
-                    logic.Cellthrtee();
+                    logic.Celltherty();
                 }
                 // logic.relocate(330, 390);
             }
@@ -108,9 +108,9 @@ public class Main extends Application {
 
                 gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
 
-                for(int y = 0; y < logic.amoungOfLines; y++) {
-                    for(int x = 0; x < logic.amoungOfLines; x++){
-                        Cell cell = logic.getAllcells()[x + y * logic.amoungOfLines];
+                for(int y = 0; y < logic.amountOfLines; y++) {
+                    for(int x = 0; x < logic.amountOfLines; x++){
+                        Cell cell = logic.getAllcells()[x + y * logic.amountOfLines];
                         int value = cell.number;
                         int xOffset = offsetCoors(x);
                         int yOffset = offsetCoors(y);
