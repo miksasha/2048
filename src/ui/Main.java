@@ -19,8 +19,8 @@ import javafx.animation.AnimationTimer;
 
 
 public class Main extends Application {
-    private static final String flowerURL = "img.png";
-    private static final int CELL_SIZE = 80;
+
+
 
     public int level=1;
     public static void main(String[] args) {
@@ -33,7 +33,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("2048 GAME");
         myStage.setScene(new Scene(root, 500, 400));
-       // levels(myStage);
+        //levels(myStage);
         myStage.show();
     }
 
@@ -111,10 +111,10 @@ public class Main extends Application {
 //                        Image flower = new Image(flowerURL);
 //                        gc.setFill(new ImagePattern(flower, 0, 0, 1, 1, true));
                         gc.setFill(cell.getBackground());
-                        gc.fillOval(xOffset, yOffset, CELL_SIZE, CELL_SIZE);
+                        gc.fillOval(xOffset, yOffset, logic.CELL_SIZE, logic.CELL_SIZE);
                         gc.setFill(cell.getForeground());
 
-                        final int size = value < 100 ? 32 : value < 1000 ? 28 : 24;
+                       int size = value < 30 ? 32 : value < 80 ? 37 : 40;
                         gc.setFont(Font.font("Verdana", FontWeight.BOLD, size));
                         gc.setTextAlign(TextAlignment.CENTER);
 
@@ -122,7 +122,7 @@ public class Main extends Application {
                         String s = String.valueOf(value);
 
                         if (value != 0)
-                            gc.fillText(s, xOffset + CELL_SIZE / 2, yOffset + CELL_SIZE / 2 - 2);
+                            gc.fillText(s, xOffset + logic.CELL_SIZE / 2, yOffset + logic.CELL_SIZE / 2 - 2);
                         if(logic.win || logic.lose) {
                             gc.setFill(Color.rgb(255, 255, 255));
                             gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());

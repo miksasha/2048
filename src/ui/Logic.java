@@ -3,19 +3,19 @@ import java.util.*;
 import java.util.List;
 
 public class Logic extends javafx.scene.canvas.Canvas {
-
+    public static final int CELL_SIZE = 80;
     private Cell[] Allcells;
     boolean win = false;
     boolean lose = false;
     int score = 0;
     boolean reverse= false;
-int amoungOfLines =3;
+int amoungOfLines =4;
     public Cell[] getAllcells() {
         return Allcells;
     }
 
     public Logic() {
-        super(330, 390);
+        super(400, 390);
         setFocused(true);
         resetGame();
     }
