@@ -9,46 +9,47 @@ public class Logic extends javafx.scene.canvas.Canvas {
     boolean lose = false;
     int score = 0;
     boolean reverse= false;
-int amoungOfLines =4;
+int amoungOfLines =2;
+    int maxNumber =20;
     public Cell[] getAllcells() {
         return Allcells;
     }
 
     public Logic() {
-        super(400, 390);
+        super(400, 500);
         setFocused(true);
-        resetGame();
+        startNewGame();
     }
 
     public Logic(double width, double height) {
         super(width, height);
         setFocused(true);
-        resetGame();
+        startNewGame();
     }
 
 
-    void resetGame() {
+    void startNewGame() {
         score = 0;
-        win = false;
-        lose = false;
         Allcells = new Cell[amoungOfLines * amoungOfLines];
         for (int cell = 0; cell < Allcells.length; cell++) {
             Allcells[cell] = new Cell();
         }
-        addCell();
-        addCell();
+        win = false;
+        lose = false;
+        newCellAdding();
+        newCellAdding();
     }
 
-    public void addCell() {
+    public void newCellAdding() {
         List<Cell> list = availableSpace();
         if(!availableSpace().isEmpty()) {
-            int index = (int) (Math.random() * list.size()) % list.size();
-            Cell emptyCell = list.get(index);
-            emptyCell.number = Math.random() < 0.9 ? 10 : 20;
+            int index = (int) (Math.random() * list.size());
+            Cell empty = list.get(index);
+            empty.number = Math.random()*10 < 9 ? 10 : 20;
         }
 
     }
-    public void addCellTwo() {
+    public void CellTen() {
         List<Cell> list = availableSpace();
         if(!availableSpace().isEmpty()) {
             int index = (int) (Math.random() * list.size()) % list.size();
@@ -57,7 +58,7 @@ int amoungOfLines =4;
         }
 
     }
-    public void addCellFour() {
+    public void CellTwenty() {
         List<Cell> list = availableSpace();
         if(!availableSpace().isEmpty()) {
             int index = (int) (Math.random() * list.size()) % list.size();
@@ -66,7 +67,7 @@ int amoungOfLines =4;
         }
 
     }
-    public void addCellEight() {
+    public void Cellthrtee() {
         List<Cell> list = availableSpace();
         if(!availableSpace().isEmpty()) {
             int index = (int) (Math.random() * list.size()) % list.size();
@@ -173,8 +174,9 @@ int amoungOfLines =4;
             if (i < amoungOfLines-1 && oldLine[i].number == oldLine[i+1].number) {
                 num += 10;
                 score += num;
-                if ( num == 100) {
+                if ( num == maxNumber) {
                     win = true;
+
                 }
                 i++;
             }
@@ -217,7 +219,7 @@ int amoungOfLines =4;
             }
         }
         if(needAddCell) {
-            addCell();
+            newCellAdding();
         }
     }
 

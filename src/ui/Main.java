@@ -6,12 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -33,11 +31,12 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("2048 GAME");
         myStage.setScene(new Scene(root, 500, 400));
-        //levels(myStage);
+        levels(myStage);
         myStage.show();
     }
 
     public void levels(Stage myStage) throws Exception{
+
         myStage.setTitle("Chernova+Mykhailenko=2048");
 
         FlowPane rootNode = new FlowPane();
@@ -46,6 +45,9 @@ public class Main extends Application {
         myStage.setOnCloseRequest(event -> Platform.exit());
 
         Logic logic = new Logic();
+
+
+
         Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
         myScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 
@@ -55,17 +57,23 @@ public class Main extends Application {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.SHIFT) {
-                    logic.resetGame();
+                    if(logic.win){level++;
+                        logic.amoungOfLines=level+2;
+                        logic.maxNumber=level*10+10;}
+                    logic.startNewGame();
+                    if(logic.maxNumber>=100){
+                        logic.maxNumber=100;
+                    }
                 }
-                if (keyEvent.getCode() == KeyCode.F2) {
-                    logic.addCellTwo();
+                if (keyEvent.getCode() == KeyCode.F1) {
+                    logic.CellTen();
                 }
 
                 if (!logic.canMove() || (!logic.win && !logic.canMove())) {
                     logic.lose = true;
                 }
-                if (keyEvent.getCode() == KeyCode.F4) {
-                    logic.addCellFour();
+                if (keyEvent.getCode() == KeyCode.F2) {
+                    logic.CellTwenty();
                 }
                 if (!logic.win && !logic.lose) {
 
@@ -80,8 +88,8 @@ public class Main extends Application {
                     }
 
                 }
-                if (keyEvent.getCode() == KeyCode.F8) {
-                    logic.addCellEight();
+                if (keyEvent.getCode() == KeyCode.F3) {
+                    logic.Cellthrtee();
                 }
                 // logic.relocate(330, 390);
             }
@@ -95,8 +103,7 @@ public class Main extends Application {
             @Override
             public void handle(long now) {
                 GraphicsContext gc = logic.getGraphicsContext2D();
-//                Image image = new Image("/C:/Liza/Summer2021/Game2048/src/ui/img.png");
-//                gc.drawImage(image,10,10,CELL_SIZE,CELL_SIZE);
+
                 gc.setFill(Color.LIGHTBLUE);
 
                 gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
@@ -108,8 +115,6 @@ public class Main extends Application {
                         int xOffset = offsetCoors(x);
                         int yOffset = offsetCoors(y);
 
-//                        Image flower = new Image(flowerURL);
-//                        gc.setFill(new ImagePattern(flower, 0, 0, 1, 1, true));
                         gc.setFill(cell.getBackground());
                         gc.fillOval(xOffset, yOffset, logic.CELL_SIZE, logic.CELL_SIZE);
                         gc.setFill(cell.getForeground());
@@ -129,6 +134,7 @@ public class Main extends Application {
                             gc.setFill(Color.rgb(78, 139, 202));
                             gc.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
                             if(logic.win){
+
                                 gc.fillText("You win!", 95, 150);
                             }
                             if(logic.lose) {
