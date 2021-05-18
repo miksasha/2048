@@ -4,30 +4,24 @@
     -fx-background-attachment: fixed;
     -fx-background-size: 100% 100%;
 }
-.firstButton {
-    -fx-background-color: transparent;
-    -fx-background-image: url("/img/One.png");
-    -fx-padding: 20px;
-    -fx-background-size: cover;
-    -fx-background-repeat: no-repeat;
- }
 
-.secondButton {
-    -fx-background-color: #99ddec;
-    -fx-border: none;
-    -fx-padding: 10px 10px;
-    -fx-text-align: center;
-    -fx-text-decoration: none;
+.buttons {
+    -fx-background-color: transparent;
     -fx-font-size: 16px;
-    -fx-font-family: Castellar;
-    -fx-color-label: white;
-    -fx-cursor: pointer;
-    -fx-webkit-transition-duration: 0.4s; /* Safari */
-    -fx-transition-duration: 0.4s;
+    -fx-font-family: Elephant;
 }
-.thirdButton {
-    -fx-background-color: transparent;
 
-    -fx-font-size: 16px;
-    -fx-font-family: Castellar;
+.buttons:hover {
+    -fx-background-color: rgba(182, 20, 22, 0.3);
+}
+
+.askButton{
+    -fx-width: 100px;
+    -fx-height: 100px;
+    -fx-border: solid 1px #000;
+    -fx-border-radius: 10px 10px 10px 10px;
+}
+
+.askButton:hover {
+    -fx-background-color: rgba(190, 64, 65, 0.3);
 }

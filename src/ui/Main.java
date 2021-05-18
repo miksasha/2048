@@ -1,11 +1,16 @@
 package ui;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
@@ -14,6 +19,7 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
+import javafx.util.Duration;
 
 
 public class Main extends Application {
@@ -33,6 +39,8 @@ public class Main extends Application {
         myStage.setScene(new Scene(root, 500, 400));
         //levels(myStage);
         myStage.show();
+       
+
     }
 
     public void levels(Stage myStage) throws Exception{
