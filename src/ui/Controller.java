@@ -9,7 +9,7 @@ public class Controller {
     private Button firstButton;
 
     public void onClickFirst(ActionEvent actionEvent) {
-        
+
     }
 
     public void onClickSecond(ActionEvent actionEvent) {

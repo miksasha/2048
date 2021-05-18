@@ -5,7 +5,29 @@
     -fx-background-size: 100% 100%;
 }
 .firstButton {
+    -fx-background-color: transparent;
     -fx-background-image: url("/img/One.png");
-    -fx-background-size: 18 30;
+    -fx-padding: 20px;
+    -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
  }
+
+.secondButton {
+    -fx-background-color: #99ddec;
+    -fx-border: none;
+    -fx-padding: 10px 10px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-font-size: 16px;
+    -fx-font-family: Castellar;
+    -fx-color-label: white;
+    -fx-cursor: pointer;
+    -fx-webkit-transition-duration: 0.4s; /* Safari */
+    -fx-transition-duration: 0.4s;
+}
+.thirdButton {
+    -fx-background-color: transparent;
+
+    -fx-font-size: 16px;
+    -fx-font-family: Castellar;
+}
