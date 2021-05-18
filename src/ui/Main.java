@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("2048 GAME");
         primaryStage.setScene(new Scene(root, 500, 400));
         primaryStage.show();
+        //я снова с вами
     }
 
 
