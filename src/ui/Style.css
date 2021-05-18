@@ -4,3 +4,8 @@
     -fx-background-attachment: fixed;
     -fx-background-size: 100% 100%;
 }
+.firstButton {
+    -fx-background-image: url("/img/One.png");
+    -fx-background-size: 18 30;
+    -fx-background-repeat: no-repeat;
+ }

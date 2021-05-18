@@ -29,7 +29,7 @@ public class Main extends Application {
     public void start(Stage myStage) throws Exception{
 
         Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
-        myStage.setTitle("2048 GAME");
+        myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 400));
         //levels(myStage);
         myStage.show();

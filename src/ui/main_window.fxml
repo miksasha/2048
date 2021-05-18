@@ -2,23 +2,28 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
 
+<?import javafx.scene.text.Font?>
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <fx:define>
+        <Image fx:id="btnImage" url="/img/One.png" />
+    </fx:define>
 
-   <children>
-      <AnchorPane prefHeight="425.0" prefWidth="502.0" styleClass="background" stylesheets="@Style.css">
-         <children>
-            <Button layoutX="368.0" layoutY="353.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="38.0" layoutY="327.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="394.0" layoutY="213.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="44.0" layoutY="141.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="325.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
-         </children></AnchorPane>
-   </children>
+    <children>
+        <AnchorPane prefHeight="425.0" prefWidth="502.0" styleClass="background" stylesheets="@Style.css">
+            <children>
+                <Button fx:id="firstButton" layoutX="368.0" layoutY="353.0" mnemonicParsing="false" text="1 level"   onAction="#onClickFirst" />
+                <Button layoutX="38.0" layoutY="327.0" mnemonicParsing="false" text="2 level" onAction="#onClickSecond" />
+                <Button layoutX="394.0" layoutY="213.0" mnemonicParsing="false" text="3 level" onAction="#onClickThree" />
+                <Button layoutX="44.0" layoutY="141.0" mnemonicParsing="false" text="4 level" onAction="#onClickFour" />
+                <Button layoutX="325.0" layoutY="56.0" mnemonicParsing="false" text="5 level" onAction="#onClickFive" />
+            </children></AnchorPane>
+    </children>
 </GridPane>
