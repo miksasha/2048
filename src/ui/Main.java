@@ -58,7 +58,7 @@ public class Main extends Application {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.SHIFT) {
                     if(logic.win){level++;
-                        logic.amoungOfLines=level+2;
+                        logic.amoungOfLines=level+1;
                         logic.maxNumber=level*10+10;}
                     logic.startNewGame();
                     if(logic.maxNumber>=100){
