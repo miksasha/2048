@@ -21,13 +21,13 @@ public class Controller {
     private Image firstLock;
     @FXML
     private AnchorPane anchorPane;
+    private Main m=new Main();
 
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
         //спроба видалити замок, поки не виходить
      //   anchorPane.getChildren().remove((Collection<?>) firstLock);
 
         Stage myStage=new Stage();
-        Main m=new Main();
         m.levels(myStage);
         myStage.show();
     }
@@ -44,7 +44,7 @@ public class Controller {
     public void onClickFive(ActionEvent actionEvent) {
     }
 
-    public void onClickAsk(ActionEvent actionEvent) {
-
+    public void onClickAsk(ActionEvent actionEvent) throws Exception {
+        m.instruction(m.menu);
     }
 }
