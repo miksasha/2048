@@ -22,7 +22,7 @@ public class Controller {
     @FXML
     private AnchorPane anchorPane;
     private Main m=new Main();
-
+    private  static Stage myStageInst;
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
         //спроба видалити замок, поки не виходить
      //   anchorPane.getChildren().remove((Collection<?>) firstLock);
@@ -45,6 +45,12 @@ public class Controller {
     }
 
     public void onClickAsk(ActionEvent actionEvent) throws Exception {
-        m.instruction(m.menu);
+        m.menu.hide();
+        myStageInst=new Stage();
+        m.instruction(myStageInst);
+    }
+    public void onClickAskButton(ActionEvent actionEvent) {
+        m.menu.show();
+        myStageInst.close();
     }
 }
