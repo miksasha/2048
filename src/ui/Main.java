@@ -51,7 +51,7 @@ public class Main extends Application {
     }
     public void instruction(Stage myStage) throws FileNotFoundException {
         //Creating an image
-        Image image = new Image(new FileInputStream("img/zamok.png"));
+        Image image = new Image(new FileInputStream("src/img/zamok.png"));
 
         //Setting the image view
         ImageView imageView = new ImageView(image);
