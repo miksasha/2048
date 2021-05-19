@@ -2,14 +2,34 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Collection;
 
 public class Controller {
     @FXML
     private Button firstButton;
+    @FXML
+    private Image firstLock;
+    @FXML
+    private AnchorPane anchorPane;
 
-    public void onClickFirst(ActionEvent actionEvent) {
+    public void onClickFirst(ActionEvent actionEvent) throws Exception {
+        //спроба видалити замок, поки не виходить
+     //   anchorPane.getChildren().remove((Collection<?>) firstLock);
 
+        Stage myStage=new Stage();
+        Main m=new Main();
+        m.levels(myStage);
+        myStage.show();
     }
 
     public void onClickSecond(ActionEvent actionEvent) {
@@ -25,5 +45,6 @@ public class Controller {
     }
 
     public void onClickAsk(ActionEvent actionEvent) {
+
     }
 }
