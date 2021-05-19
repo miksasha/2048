@@ -6,9 +6,10 @@ import java.util.List;
 public class Logic extends javafx.scene.canvas.Canvas {
     public static final int CELL_SIZE = 80;
     private Cell[] allcells;
-    boolean win = false;
-    boolean lose = false;
+    boolean winning = false;
+    boolean fail = false;
     int score = 0;
+    int lives=3;
     //boolean reverse = false;
     int amountOfLines = 2;
     int maxNumber = 20;
@@ -26,13 +27,13 @@ public class Logic extends javafx.scene.canvas.Canvas {
 
 
     void startNewGame() {
-        score = 0;
+      //  score = 0;
         allcells = new Cell[amountOfLines * amountOfLines];
         for (int cell = 0; cell < allcells.length; cell++) {
             allcells[cell] = new Cell();
         }
-        win = false;
-        lose = false;
+        winning = false;
+        fail = false;
         newCellAdding();
         newCellAdding();
     }
@@ -183,7 +184,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 num += 10;
                 score += num;
                 if (num == maxNumber) {
-                    win = true;
+                    winning = true;
 
                 }
                 i++;
