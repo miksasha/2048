@@ -53,7 +53,7 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
-       levels(myStage);
+     //  levels(myStage);
         myStage.show();
         menu=myStage;
     }

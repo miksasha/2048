@@ -69,7 +69,7 @@
             </children></AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="panel" stylesheets="@Style.css" GridPane.rowIndex="1">
         <buttons>
-            <ComboBox fx:id="handChoice" prefWidth="150.0" promptText="Вибір руки" styleClass="comboBox" stylesheets="@Style.css">
+            <ComboBox fx:id="handChoice" onAction="#actionBox" prefWidth="150.0" promptText="Вибір руки" styleClass="comboBox" stylesheets="@Style.css">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:id="right" fx:value="Правша" />

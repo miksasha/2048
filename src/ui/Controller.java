@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,6 +24,19 @@ public class Controller {
     private AnchorPane anchorPane;
     private Main m=new Main();
     private  static Stage myStageInst;
+
+    @FXML
+    private ComboBox handChoice;
+
+    @FXML protected void actionBox(ActionEvent event ) {
+        String output = (String) handChoice.getValue();
+        if(output.equals("Шульга")){
+
+        }else{
+
+        }
+    }
+
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
         //спроба видалити замок, поки не виходить
      //   anchorPane.getChildren().remove((Collection<?>) firstLock);
