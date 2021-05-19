@@ -27,5 +27,11 @@
 }
 
 .askButton:hover {
-    -fx-background-color: rgba(190, 64, 65, 0.3);
+    -fx-background-color: rgba(246, 162, 163, 0.3);
+}
+
+#square {
+    width: 100px;
+    height: 100px;
+    background: red;
 }

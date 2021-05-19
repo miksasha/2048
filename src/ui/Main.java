@@ -36,7 +36,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
-        levels(myStage);
+        myStage.setResizable(false);
+       //levels(myStage);
         myStage.show();
 
 
@@ -49,7 +50,7 @@ public class Main extends Application {
         // myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
-        myStage.setResizable(false);
+        myStage.setResizable(true);
         myStage.setOnCloseRequest(event -> Platform.exit());
 
         Logic logic = new Logic();

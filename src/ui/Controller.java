@@ -23,4 +23,7 @@ public class Controller {
 
     public void onClickFive(ActionEvent actionEvent) {
     }
+
+    public void onClickAsk(ActionEvent actionEvent) {
+    }
 }

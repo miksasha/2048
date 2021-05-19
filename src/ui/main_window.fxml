@@ -28,7 +28,7 @@
             </children></AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="panel" stylesheets="@Style.css" GridPane.rowIndex="1">
         <buttons>
-          <Button mnemonicParsing="false" styleClass="askButton" stylesheets="@Style.css" text="?">
+          <Button mnemonicParsing="false" styleClass="askButton" stylesheets="@Style.css" onAction="#onClickAsk" text="?">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
