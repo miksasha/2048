@@ -67,6 +67,7 @@ public class Main extends Application {
 
                     time.stopTimer();
                     logic.startNewGame();
+                    time.startTimer(00);
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
                     if (logic.winning) {
@@ -78,6 +79,7 @@ public class Main extends Application {
                         if (logic.maxNumber >= 100) {
                             logic.maxNumber = 100;
                         }
+                        time.startTimer(00);
                     }else{
                         JOptionPane.showMessageDialog(null, "You can't see next level? press SHIFT to play this one one more time");
                     }
