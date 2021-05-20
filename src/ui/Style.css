@@ -30,12 +30,6 @@
     -fx-background-color: rgb(207, 99, 100);
 }
 
-#square {
-    width: 100px;
-    height: 100px;
-    background: red;
-}
-
 .comboBox{
 }
 
