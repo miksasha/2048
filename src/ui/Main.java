@@ -2,28 +2,25 @@ package ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
-import javafx.scene.Group;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
+
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
-import javafx.scene.shape.Rectangle;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,9 +69,9 @@ public class Main extends Application {
         myStage.show();
     }
 
-    public void levels(Stage myStage) throws Exception {
+    public void levels(Stage myStage)  {
         time = new KTimer();
-        time.startTimer(00);
+        time.startTimer(0);
 
         // myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
@@ -90,77 +87,74 @@ public class Main extends Application {
 
         myStage.setScene(myScene);
 
-        myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode() == KeyCode.SHIFT) {
+        myScene.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.SHIFT) {
+                logic.lives--;
+                time.stopTimer();
+                logic.startNewGame();
+                time.startTimer(0);
+            }
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                if (logic.winning) {
+                    level++;
 
+                    logic.amountOfLines = level + 1;
+                   // logic.CELL_SIZE=320/logic.amountOfLines;
+                    logic.maxNumber = level * 10 + 90;
                     time.stopTimer();
                     logic.startNewGame();
-                    time.startTimer(00);
-                }
-                if (keyEvent.getCode() == KeyCode.ENTER) {
-                    if (logic.winning) {
-                        level++;
-
-                        logic.amountOfLines = level + 1;
-                       // logic.CELL_SIZE=320/logic.amountOfLines;
-                        logic.maxNumber = level * 10 + 10;
-                        time.stopTimer();
-                        logic.startNewGame();
-                        if (logic.maxNumber >= 100) {
-                            logic.maxNumber = 100;
-                        }
-                        time.startTimer(00);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "You can't see next level? press SHIFT to play this one one more time");
+                    if (logic.maxNumber >= 100) {
+                        logic.maxNumber = 100;
                     }
+                    time.startTimer(0);
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't see next level? press SHIFT to play this one one more time");
                 }
-                if (keyEvent.getCode() == KeyCode.F1) {
-                    logic.CellTen();
-                }
-
-                if (logic.checkIfStepIsNotAvalible() || (!logic.winning && logic.checkIfStepIsNotAvalible())) {
-                    logic.fail = true;
-                }
-                if (keyEvent.getCode() == KeyCode.F2) {
-                    logic.CellTwenty();
-                }
-                if (!logic.winning && !logic.fail) {
-                    if (rightHanded) {
-                        if (keyEvent.getCode() == KeyCode.UP) {
-                            logic.up();
-                        }
-                        if (keyEvent.getCode() == KeyCode.DOWN) {
-                            logic.down();
-                        }
-                        if (keyEvent.getCode() == KeyCode.LEFT) {
-                            logic.left();
-                        }
-                        if (keyEvent.getCode() == KeyCode.RIGHT) {
-                            logic.right();
-                        }
-                    } else {
-                        if (keyEvent.getCode() == KeyCode.W) {
-                            logic.up();
-                        }
-                        if (keyEvent.getCode() == KeyCode.S) {
-                            logic.down();
-                        }
-                        if (keyEvent.getCode() == KeyCode.A) {
-                            logic.left();
-                        }
-                        if (keyEvent.getCode() == KeyCode.D) {
-                            logic.right();
-                        }
-                    }
-
-                }
-                if (keyEvent.getCode() == KeyCode.F3) {
-                    logic.Celltherty();
-                }
-                // logic.relocate(330, 390);
             }
+            if (keyEvent.getCode() == KeyCode.F1) {
+                logic.CellTen();
+            }
+
+            if (logic.checkIfStepIsNotAvalible() || (!logic.winning && logic.checkIfStepIsNotAvalible())) {
+                logic.fail = true;
+            }
+            if (keyEvent.getCode() == KeyCode.F2) {
+                logic.CellTwenty();
+            }
+            if (!logic.winning && !logic.fail) {
+                if (rightHanded) {
+                    if (keyEvent.getCode() == KeyCode.UP) {
+                        logic.up();
+                    }
+                    if (keyEvent.getCode() == KeyCode.DOWN) {
+                        logic.down();
+                    }
+                    if (keyEvent.getCode() == KeyCode.LEFT) {
+                        logic.left();
+                    }
+                    if (keyEvent.getCode() == KeyCode.RIGHT) {
+                        logic.right();
+                    }
+                } else {
+                    if (keyEvent.getCode() == KeyCode.W) {
+                        logic.up();
+                    }
+                    if (keyEvent.getCode() == KeyCode.S) {
+                        logic.down();
+                    }
+                    if (keyEvent.getCode() == KeyCode.A) {
+                        logic.left();
+                    }
+                    if (keyEvent.getCode() == KeyCode.D) {
+                        logic.right();
+                    }
+                }
+
+            }
+            if (keyEvent.getCode() == KeyCode.F3) {
+                logic.Celltherty();
+            }
+            // logic.relocate(330, 390);
         });
 
         rootNode.getChildren().add(logic);
@@ -206,7 +200,7 @@ public class Main extends Application {
                                 gc.fillText("You win! With time " + time.getTime() / 1000 + " sec", 95, 150);
                             }
                             if (logic.fail) {
-                                logic.lives--;
+
                                 gc.fillText("Game over! With time " + time.getTime() / 1000 + " sec", 150, 130);
                                 gc.fillText("You lost one life!", 160, 200);
                             }
