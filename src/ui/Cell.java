@@ -22,16 +22,16 @@ public class Cell {
 
     public Color getBackground() {
         switch (number) {
-            case 10:		return Color.rgb(0,1,2);
-            case 20:		return Color.GREEN;
-            case 30:		return Color.GREEN;
-            case 40:		return Color.GREEN;
-            case 50:		return Color.GREEN;
-            case 60:		return Color.GREEN;
-            case 70:		return Color.GREEN;
-            case 80:		return Color.GREEN;
-            case 90:		return Color.GREEN;
-            case 100:		return Color.GREEN;
+            case 10:		return Color.rgb(238,163,163);
+            case 20:		return Color.rgb(241,94,94);
+            case 30:		return Color.rgb(241,39,39);
+            case 40:		return Color.rgb(212,13,13);
+            case 50:		return Color.rgb(130,8,8);
+            case 60:		return Color.rgb(219,92,33);
+            case 70:		return Color.rgb(156,53,5);
+            case 80:		return Color.rgb(88,5,5);
+            case 90:		return Color.rgb(57,2,2);
+            case 100:		return Color.rgb(14,1,1);
         }
         return Color.rgb(205, 193, 180, 1.0); //0xcdc1b4
     }
