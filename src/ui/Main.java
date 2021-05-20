@@ -150,7 +150,7 @@ public class Main extends Application {
             public void handle(long now) {
                 GraphicsContext gc = logic.getGraphicsContext2D();
 
-                gc.setFill(Color.LIGHTBLUE);
+                gc.setFill(Color.ROSYBROWN);
 
                 gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
 
@@ -176,22 +176,21 @@ public class Main extends Application {
                             gc.fillText(s, xOffset + logic.CELL_SIZE / 2, yOffset + logic.CELL_SIZE / 2 - 2);
                         if (logic.winning || logic.fail) {
                             time.stopTimer();
-                            gc.setFill(Color.rgb(255, 255, 255));
+                            gc.setFill(Color.ROSYBROWN);
                             gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
-                            gc.setFill(Color.rgb(78, 139, 202));
+                            gc.setFill(Color.rgb(182, 43, 64));
                             gc.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
                             if (logic.winning) {
-
-                                gc.fillText("You win! with time" + time.getTime() / 1000 + "sec", 95, 150);
+                                gc.fillText("You win! With time " + time.getTime() / 1000 + " sec", 95, 150);
                             }
                             if (logic.fail) {
                                 logic.lives--;
-                                gc.fillText("Game over! with time" + time.getTime() / 1000 + "sec", 150, 130);
+                                gc.fillText("Game over! With time " + time.getTime() / 1000 + " sec", 150, 130);
                                 gc.fillText("You lost one life!", 160, 200);
                             }
                             if (logic.winning || logic.fail) {
                                 gc.setFont(Font.font("Verdana", FontWeight.LIGHT, 16));
-                                gc.setFill(Color.rgb(128, 128, 128));
+                                gc.setFill(Color.rgb(182, 43, 64));
                                 gc.fillText("Press Shift to play again", 110, 270);
                             }
                         }
