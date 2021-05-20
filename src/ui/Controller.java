@@ -36,9 +36,7 @@ public class Controller {
     @FXML protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
         if(output.equals("Шульга")){
-
-        }else{
-
+m.rightHanded=false;
         }
     }
 

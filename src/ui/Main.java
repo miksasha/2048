@@ -102,7 +102,9 @@ public class Main extends Application {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
                     if (logic.winning) {
                         level++;
+
                         logic.amountOfLines = level + 1;
+                       // logic.CELL_SIZE=320/logic.amountOfLines;
                         logic.maxNumber = level * 10 + 10;
                         time.stopTimer();
                         logic.startNewGame();

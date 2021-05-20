@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.List;
 
 public class Logic extends javafx.scene.canvas.Canvas {
-    public static final int CELL_SIZE = 80;
+    public static  int CELL_SIZE = 80;
     private Cell[] allcells;
     boolean winning = false;
     boolean fail = false;

@@ -22,7 +22,7 @@ public class Cell {
 
     public Color getBackground() {
         switch (number) {
-            case 10:		return Color.GREEN;
+            case 10:		return Color.rgb(0,1,2);
             case 20:		return Color.GREEN;
             case 30:		return Color.GREEN;
             case 40:		return Color.GREEN;
