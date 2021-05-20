@@ -24,9 +24,12 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 import javafx.scene.shape.Rectangle;
+
 import javax.swing.*;
 import java.awt.*;
+
 import javafx.geometry.Insets;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -39,13 +42,16 @@ public class Main extends Application {
 
     public int level = 1;
     KTimer time;
+    boolean rightHanded = true;
 
     public static void main(String[] args) {
         launch(args);
     }
+
     public static Stage menu;
     public static Stage instruction;
     public static Parent root;
+
     @Override
     public void start(Stage myStage) throws Exception {
 
@@ -53,9 +59,9 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
-       levels(myStage);
+        // levels(myStage);
         myStage.show();
-        menu=myStage;
+        menu = myStage;
     }
 
     public void instruction(Stage myStage) throws IOException {
@@ -104,7 +110,7 @@ public class Main extends Application {
                             logic.maxNumber = 100;
                         }
                         time.startTimer(00);
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "You can't see next level? press SHIFT to play this one one more time");
                     }
                 }
@@ -119,18 +125,32 @@ public class Main extends Application {
                     logic.CellTwenty();
                 }
                 if (!logic.winning && !logic.fail) {
-
-                    if (keyEvent.getCode() == KeyCode.UP) {
-                        logic.up();
-                    }
-                    if (keyEvent.getCode() == KeyCode.DOWN) {
-                        logic.down();
-                    }
-                    if (keyEvent.getCode() == KeyCode.LEFT) {
-                        logic.left();
-                    }
-                    if (keyEvent.getCode() == KeyCode.RIGHT) {
-                        logic.right();
+                    if (rightHanded) {
+                        if (keyEvent.getCode() == KeyCode.UP) {
+                            logic.up();
+                        }
+                        if (keyEvent.getCode() == KeyCode.DOWN) {
+                            logic.down();
+                        }
+                        if (keyEvent.getCode() == KeyCode.LEFT) {
+                            logic.left();
+                        }
+                        if (keyEvent.getCode() == KeyCode.RIGHT) {
+                            logic.right();
+                        }
+                    } else {
+                        if (keyEvent.getCode() == KeyCode.W) {
+                            logic.up();
+                        }
+                        if (keyEvent.getCode() == KeyCode.S) {
+                            logic.down();
+                        }
+                        if (keyEvent.getCode() == KeyCode.A) {
+                            logic.left();
+                        }
+                        if (keyEvent.getCode() == KeyCode.D) {
+                            logic.right();
+                        }
                     }
 
                 }
