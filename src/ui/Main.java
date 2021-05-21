@@ -2,40 +2,24 @@ package ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
-import javafx.scene.shape.Rectangle;
-
 import javax.swing.*;
 import java.awt.*;
-
-import javafx.geometry.Insets;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 
 public class Main extends Application {
@@ -203,20 +187,22 @@ public class Main extends Application {
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 20));
                             if (logic.winning) {
                                 Image image = new Image("img/Pirat.png");
-                                gc.drawImage(image, 0, 0,100,100);
-                                gc.fillText("Ви перемогли! Час: " + time.getTime() / 1000 + " с", 95, 150);
+                                gc.drawImage(image, 10, 340,140,150);
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 170, 150);
+                                Button screenshot = new Button("Зберегти рекорд!");
+                                
                             }
                             if (logic.fail) {
                                 logic.lives--;
 //                                Image image =   new Image("img/skull.png");
-//                                gc.drawImage(image, 0, 0);
-                                gc.fillText("Ви програли! Час: " + time.getTime() / 1000 + " с", 150, 130);
+//                                gc.drawImage(image, 0, 0,100,100);
+                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
                                 gc.fillText("Ви втратили одне життя!", 160, 200);
                             }
                             if (logic.winning || logic.fail) {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Shift, щоб почати знову ", 110, 270);
+                                gc.fillText("Натисніть Shift, щоб почати знову ", 150, 270);
                             }
                         }
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
