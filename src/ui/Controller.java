@@ -2,19 +2,11 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Collection;
 
 public class Controller {
     @FXML
@@ -32,6 +24,10 @@ public class Controller {
 
     private Main m=new Main();
     private static Stage myStageInst;
+    private boolean level2Open =false;
+    private boolean level3Open =false;
+    private boolean level4Open =false;
+    private boolean level5Open =false;
 
     @FXML protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
@@ -49,18 +45,51 @@ public class Controller {
         Stage myStage=new Stage();
         m.levels(myStage);
         myStage.show();
+        if(m.logic.winning){
+            anchorPane.getChildren().remove( firstLock2);
+            level2Open =true;
+        }
     }
 
     public void onClickSecond(ActionEvent actionEvent) {
+        if(level2Open){
+            //викликати наступний рівень
+
+            if(m.logic.winning){
+                anchorPane.getChildren().remove( firstLock3);
+                level3Open =true;
+            }
+        }
+
     }
 
     public void onClickThree(ActionEvent actionEvent) {
+        if(level3Open){
+            //викликати наступний рівень
+
+            if(m.logic.winning){
+                anchorPane.getChildren().remove( firstLock4);
+                level4Open =true;
+            }
+        }
     }
 
     public void onClickFour(ActionEvent actionEvent) {
+        if(level4Open){
+            //викликати наступний рівень
+
+            if(m.logic.winning){
+                anchorPane.getChildren().remove( firstLock5);
+                level5Open =true;
+            }
+        }
     }
 
     public void onClickFive(ActionEvent actionEvent) {
+        if(level5Open){
+            //викликати наступний рівень
+
+        }
     }
 
     public void onClickAsk(ActionEvent actionEvent) throws Exception {

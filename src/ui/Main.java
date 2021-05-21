@@ -35,7 +35,7 @@ public class Main extends Application {
     public static Stage menu;
     public static Stage instruction;
     public static Parent root;
-
+    public Logic logic;
     @Override
     public void start(Stage myStage) throws Exception {
 
@@ -66,7 +66,7 @@ public class Main extends Application {
         myStage.setResizable(false);
         myStage.setOnCloseRequest(event -> Platform.exit());
 
-        Logic logic = new Logic();
+         logic = new Logic();
 
 
         Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
@@ -190,7 +190,7 @@ public class Main extends Application {
                                 gc.drawImage(image, 10, 340,140,150);
                                 gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 170, 150);
                                 Button screenshot = new Button("Зберегти рекорд!");
-                                
+
                             }
                             if (logic.fail) {
                                 logic.lives--;
