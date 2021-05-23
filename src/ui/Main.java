@@ -16,9 +16,11 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+
 import javafx.scene.image.Image;
 
 
@@ -36,6 +38,7 @@ public class Main extends Application {
     public static Stage instruction;
     public static Parent root;
     public Logic logic;
+
     @Override
     public void start(Stage myStage) throws Exception {
 
@@ -66,7 +69,7 @@ public class Main extends Application {
         myStage.setResizable(false);
         myStage.setOnCloseRequest(event -> Platform.exit());
 
-         logic = new Logic();
+        logic = new Logic();
 
 
         Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
@@ -85,10 +88,15 @@ public class Main extends Application {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
                     if (logic.winning) {
                         level++;
-
-                        logic.amountOfLines = level + 1;
-                       // logic.CELL_SIZE=320/logic.amountOfLines;
-                        logic.maxNumber = level * 10 + 10;
+                        if (level < 6) {
+                            logic.amountOfLines = level + 1;
+                            // logic.CELL_SIZE=320/logic.amountOfLines;
+                            logic.maxNumber = level * 10 + 10;
+                        } else {
+                            logic.ice = true;
+                            logic.amountOfLines = 4;
+                            logic.maxNumber = 50;
+                        }
                         time.stopTimer();
                         logic.startNewGame();
                         if (logic.maxNumber >= 100) {
@@ -187,7 +195,7 @@ public class Main extends Application {
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 20));
                             if (logic.winning) {
                                 Image image = new Image("img/Pirat.png");
-                                gc.drawImage(image, 10, 340,140,150);
+                                gc.drawImage(image, 10, 340, 140, 150);
                                 gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 170, 150);
                                 Button screenshot = new Button("Зберегти рекорд!");
 

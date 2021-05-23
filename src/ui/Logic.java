@@ -4,15 +4,16 @@ import java.util.*;
 import java.util.List;
 
 public class Logic extends javafx.scene.canvas.Canvas {
-    public static  int CELL_SIZE = 80;
+    public static int CELL_SIZE = 80;
     private Cell[] allcells;
     boolean winning = false;
     boolean fail = false;
     int score = 0;
-    int lives=3;
+    int lives = 3;
     //boolean reverse = false;
     int amountOfLines = 2;
     int maxNumber = 20;
+    boolean ice = false;
 
     public Cell[] getAllcells() {
         return allcells;
@@ -25,25 +26,35 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
 
-
     void startNewGame() {
-      //  score = 0;
         allcells = new Cell[amountOfLines * amountOfLines];
         for (int cell = 0; cell < allcells.length; cell++) {
             allcells[cell] = new Cell();
         }
         winning = false;
         fail = false;
-        newCellAdding();
+        newCellAddingDependOnIce();
         newCellAdding();
     }
 
-    public void newCellAdding() {
+    private void newCellAddingDependOnIce() {
+
         List<Cell> list = freeCells();
         if (!freeCells().isEmpty()) {
             int index = (int) (Math.random() * list.size());
             Cell empty = list.get(index);
             empty.number = Math.random() * 10 < 9 ? 10 : 20;
+            empty.frozen = ice;}
+    }
+
+    public void newCellAdding() {
+
+        List<Cell> list = freeCells();
+        if (!freeCells().isEmpty()) {
+            int index = (int) (Math.random() * list.size());
+            Cell empty = list.get(index);
+            empty.number = Math.random() * 10 < 9 ? 10 : 20;
+
         }
 
     }
@@ -54,6 +65,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
             int index = (int) (Math.random() * list.size()) % list.size();
             Cell emptyCell = list.get(index);
             emptyCell.number = 10;
+            emptyCell.frozen = ice;
         }
 
     }
@@ -64,6 +76,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
             int index = (int) (Math.random() * list.size()) % list.size();
             Cell emptyCell = list.get(index);
             emptyCell.number = 20;
+            emptyCell.frozen = ice;
         }
 
     }
@@ -74,6 +87,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
             int index = (int) (Math.random() * list.size()) % list.size();
             Cell emptyCell = list.get(index);
             emptyCell.number = 30;
+            emptyCell.frozen = ice;
         }
 
     }
@@ -94,7 +108,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
         return allcells[x + y * amountOfLines];
     }
 
-     boolean checkIfStepIsNotAvalible() {
+    boolean checkIfStepIsNotAvalible() {
         if (!isFull()) return false;
         for (int x = 0; x < amountOfLines; x++) {
             for (int y = 0; y < amountOfLines; y++) {
@@ -177,19 +191,26 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
     private Cell[] mergeLine(Cell[] oldLine) {
+        int a = 0;
         LinkedList<Cell> list = new LinkedList<>();
         for (int i = 0; i < amountOfLines && !oldLine[i].isEmpty(); i++) {
             int num = oldLine[i].number;
-            if (i < amountOfLines - 1 && oldLine[i].number == oldLine[i + 1].number) {
+            boolean iced=oldLine[i].frozen;
+            if (i < amountOfLines - 1 && oldLine[i].number == oldLine[i + 1].number && oldLine[i].frozen == oldLine[i + 1].frozen) {
                 num += 10;
                 score += num;
+                a++;
                 if (num == maxNumber) {
                     winning = true;
 
                 }
                 i++;
             }
-            list.add(new Cell(num));
+          //  if (ice && a % 2 == 0) {
+                list.add(new Cell(num, iced));
+//            } else {
+//                list.add(new Cell(num));
+//            }
         }
 
         if (list.size() == 0) {
@@ -228,8 +249,13 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 addMoreCells = true;
             }
         }
+        Random rand = new Random();
         if (addMoreCells) {
-            newCellAdding();
+            int i= rand.nextInt(10);
+            if(i%2==0){
+            newCellAdding();}else{
+                newCellAddingDependOnIce();
+            }
         }
     }
 

@@ -7,20 +7,37 @@ import javafx.scene.paint.Paint;
 
 public class Cell {
     int number;
-
+boolean frozen = false;
     public Cell() {
         this.number = 0;
     }
 
     public Cell(int number) {
         this.number = number;
+        frozen=false;
     }
-
+    public Cell(int number, boolean frozen) {
+        this.number = number;
+        this.frozen=frozen;
+    }
     public boolean isEmpty() {
         return number == 0;
     }
 
     public Color getBackground() {
+        if(frozen==true){
+            switch (number) {
+            case 10:		return Color.valueOf("54ADE8FF");
+            case 20:		return Color.valueOf("5471F8FF");
+            case 30:		return Color.valueOf("1A4DFAFF");
+            case 40:		return Color.valueOf("0531C4FF");
+            case 50:		return Color.valueOf("0D0DD5FF");
+            case 60:		return Color.valueOf("0E0484FF");
+            case 70:		return Color.valueOf("3C03F8FF");
+            case 80:		return Color.valueOf("714AF3FF");
+            case 90:		return Color.valueOf("9C6CE8FF");
+            case 100:		return Color.valueOf("BFAFEAFF");}
+        }
         switch (number) {
             case 10:		return Color.rgb(238,163,163);
             case 20:		return Color.rgb(241,94,94);
