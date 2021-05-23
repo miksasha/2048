@@ -91,11 +91,6 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
     private Cell cellAt(int x, int y) {
-        //todo fix bag
-        System.out.println(x);
-        System.out.println(y);
-        System.out.println(amountOfLines-1);
-        System.out.println(x + y * amountOfLines);
         return allcells[x + y * amountOfLines];
     }
 

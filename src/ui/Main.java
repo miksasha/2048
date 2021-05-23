@@ -203,6 +203,9 @@ public class Main extends Application {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
                                 gc.fillText("Натисніть Shift, щоб почати знову ", 150, 270);
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                gc.setFill(Color.WHITE);
+                                gc.fillText("Натисніть Enter, щоб продовжити ", 150, 290);
                             }
                         }
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
