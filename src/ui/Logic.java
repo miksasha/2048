@@ -191,7 +191,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
     }
 
     private Cell[] mergeLine(Cell[] oldLine) {
-        int a = 0;
+
         LinkedList<Cell> list = new LinkedList<>();
         for (int i = 0; i < amountOfLines && !oldLine[i].isEmpty(); i++) {
             int num = oldLine[i].number;
@@ -199,18 +199,18 @@ public class Logic extends javafx.scene.canvas.Canvas {
             if (i < amountOfLines - 1 && oldLine[i].number == oldLine[i + 1].number && oldLine[i].frozen == oldLine[i + 1].frozen) {
                 num += 10;
                 score += num;
-                a++;
+
                 if (num == maxNumber) {
                     winning = true;
 
                 }
                 i++;
             }
-          //  if (ice && a % 2 == 0) {
+            if (num<50) {
                 list.add(new Cell(num, iced));
-//            } else {
-//                list.add(new Cell(num));
-//            }
+            } else {
+                list.add(new Cell(num));
+            }
         }
 
         if (list.size() == 0) {

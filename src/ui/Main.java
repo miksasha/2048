@@ -105,7 +105,7 @@ public class Main extends Application {
                         } else {
                             logic.ice = true;
                             logic.amountOfLines = 4;
-                            logic.maxNumber = 50;
+                            logic.maxNumber = 100;
                         }
                         speak(level);
                         time.stopTimer();
