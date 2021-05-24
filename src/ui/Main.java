@@ -182,6 +182,12 @@ String words="Hi!!!";
                         gc.setFont(Font.font("Verdana", FontWeight.BOLD, size));
                         gc.setTextAlign(TextAlignment.CENTER);
 
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Бали: " + logic.score, 200, 350);
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Життя: " + logic.lives, 200, 390);
 
                         String s = String.valueOf(value);
 
@@ -194,16 +200,25 @@ String words="Hi!!!";
                             gc.setFill(Color.WHITE);
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 20));
                             if (logic.winning) {
-                                Image image = new Image("img/Pirat.png");
-                                gc.drawImage(image, 10, 340, 140, 150);
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 170, 150);
+                                Image cup= new Image("img/win.png");
+                                gc.drawImage(cup, 120, 15, 150, 150);
+                                Image pirate = new Image("img/Pirat.png");
+                                gc.drawImage(pirate, 10, 340, 140, 150);
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 190, 180);
                                 Button screenshot = new Button("Зберегти рекорд!");
+
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                                gc.fillText("Бали: " + logic.score, 50, 20);
+//                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+//                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                                gc.fillText("Життя: " + logic.lives, 330, 20);
 
                             }
                             if (logic.fail) {
                                 logic.lives--;
-//                                Image image =   new Image("img/skull.png");
-//                                gc.drawImage(image, 0, 0,100,100);
+                                Image image =   new Image("img/skull.png");
+                                gc.drawImage(image, 0, 0,100,100);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
                                 gc.fillText("Ви втратили одне життя!", 160, 200);
                             }
@@ -216,12 +231,6 @@ String words="Hi!!!";
                                 gc.fillText("Натисніть Enter, щоб продовжити ", 150, 290);
                             }
                         }
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Бали: " + logic.score, 200, 350);
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, 200, 390);
                     }
                 }
             }
