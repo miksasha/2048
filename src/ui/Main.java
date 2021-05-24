@@ -208,11 +208,11 @@ public class Main extends Application {
                                 Button screenshot = new Button("Зберегти рекорд!");
 
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Бали: " + logic.score, 10, 10);
+                                gc.fillText("Бали: " + logic.score, 50, 20);
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 //                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Життя: " + logic.lives, 10, 200);
+                                gc.fillText("Життя: " + logic.lives, 330, 20);
 
                             }
                             if (logic.fail) {
