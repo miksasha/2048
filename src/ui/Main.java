@@ -29,7 +29,8 @@ public class Main extends Application {
     public int level = 1;
     KTimer time;
     boolean rightHanded = true;
-String words="Hi!!!";
+    String fraze = "Ви перемогли\nодин рівень\n       Скарби вам не знайти!!!";
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -66,13 +67,20 @@ String words="Hi!!!";
         // myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
-        myStage.setResizable(false);
+            myStage.setResizable(true);
+
         myStage.setOnCloseRequest(event -> Platform.exit());
+        double width = 400;
+        double height = 500;
+        if (level >= 4) {
+            width = (level - 4) * 80 + 400;
+            height = (level - 4) * 80 + 500;
+        }
 
         logic = new Logic();
 
 
-        Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
+        Scene myScene = new Scene(rootNode, width, height);
         myScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 
         myStage.setScene(myScene);
@@ -86,8 +94,16 @@ String words="Hi!!!";
                     time.startTimer(00);
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
+
+
                     if (logic.winning) {
                         level++;
+                        if (level >= 4) {
+                            logic.setWidth((level - 4) * 80 + 400);
+                            logic.setHeight((level - 4) * 80 + 500);
+                        }
+
+
                         if (level < 6) {
                             logic.amountOfLines = level + 1;
                             // logic.CELL_SIZE=320/logic.amountOfLines;
@@ -97,6 +113,7 @@ String words="Hi!!!";
                             logic.amountOfLines = 4;
                             logic.maxNumber = 50;
                         }
+                        speak(level);
                         time.stopTimer();
                         logic.startNewGame();
                         if (logic.maxNumber >= 100) {
@@ -104,7 +121,7 @@ String words="Hi!!!";
                         }
                         time.startTimer(00);
                     } else {
-                        JOptionPane.showMessageDialog(null, "You can't see next level? press SHIFT to play this one one more time");
+                        JOptionPane.showMessageDialog(null, "You can't see next level, press SHIFT to play this one one more time");
                     }
                 }
                 if (keyEvent.getCode() == KeyCode.F1) {
@@ -198,13 +215,17 @@ String words="Hi!!!";
                             gc.setFill(Color.ROSYBROWN);
                             gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
                             gc.setFill(Color.WHITE);
-                            gc.setFont(Font.font("Elephant", FontWeight.BOLD, 20));
+                            gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
                             if (logic.winning) {
-                                Image cup= new Image("img/win.png");
+                                Image cup = new Image("img/win.png");
                                 gc.drawImage(cup, 120, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 gc.drawImage(pirate, 10, 340, 140, 150);
+                                Image words = new Image("img/Word.png");
+                                gc.drawImage(words, 160, 340, 220, 160);
                                 gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 190, 180);
+                                gc.fillText(fraze, 270, 400);
+                                //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 Button screenshot = new Button("Зберегти рекорд!");
 
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
@@ -217,8 +238,8 @@ String words="Hi!!!";
                             }
                             if (logic.fail) {
                                 logic.lives--;
-                                Image image =   new Image("img/skull.png");
-                                gc.drawImage(image, 0, 0,100,100);
+                                Image image = new Image("img/skull.png");
+                                gc.drawImage(image, 0, 0, 100, 100);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
                                 gc.fillText("Ви втратили одне життя!", 160, 200);
                             }
@@ -235,6 +256,32 @@ String words="Hi!!!";
                 }
             }
         }.start();
+    }
+
+    private void speak(int level) {
+
+        switch (level) {
+            case 2: {
+                fraze = "Заробляйте монети\nтільки так\nВи знайдете те, що шукали";
+                break;
+            }
+            case 3: {
+                fraze = "3 рівень";
+                break;
+            }
+            case 4: {
+                fraze = "4 рівень";
+                break;
+            }
+            case 5: {
+                fraze = "Льодові кулі\nможуть вас зупинити";
+                break;
+            }
+            case 6: {
+                fraze = "Якщо у вас є\n500 монет\nви зможете пройти";
+                break;
+            }
+        }
     }
 
     private static int offsetCoors(int arg) {
