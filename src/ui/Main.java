@@ -29,7 +29,7 @@ public class Main extends Application {
     public int level = 1;
     KTimer time;
     boolean rightHanded = true;
-
+String words="Hi!!!";
     public static void main(String[] args) {
         launch(args);
     }
