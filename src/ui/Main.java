@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
 
 public class Main extends Application {
 
-    public int level = 5;
+    public int level = 1;
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nодин рівень\n       Скарби вам не знайти!!!";
@@ -82,6 +82,9 @@ public class Main extends Application {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.SHIFT) {
+                    if (logic.fail) {
+                        logic.lives--;
+                    }
                     time.stopTimer();
                     logic.startNewGame();
                     time.startTimer(00);
@@ -240,7 +243,7 @@ public class Main extends Application {
 
                             }
                             if (logic.fail) {
-                                logic.lives--;
+
                                 Image image = new Image("img/skull.png");
                                 gc.drawImage(image, 0, 0, 100, 100);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
