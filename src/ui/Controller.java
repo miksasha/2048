@@ -45,32 +45,20 @@ public class Controller {
         Stage myStage=new Stage();
         m.levels(myStage);
         myStage.show();
-        if(m.logic.winning){
-            anchorPane.getChildren().remove( firstLock2);
-            level2Open =true;
-        }
+
     }
 
     public void onClickSecond(ActionEvent actionEvent) {
         if(level2Open){
             //викликати наступний рівень
 
-            if(m.logic.winning){
-                anchorPane.getChildren().remove( firstLock3);
-                level3Open =true;
-            }
         }
-
     }
 
     public void onClickThree(ActionEvent actionEvent) {
         if(level3Open){
             //викликати наступний рівень
 
-            if(m.logic.winning){
-                anchorPane.getChildren().remove( firstLock4);
-                level4Open =true;
-            }
         }
     }
 
@@ -78,10 +66,6 @@ public class Controller {
         if(level4Open){
             //викликати наступний рівень
 
-            if(m.logic.winning){
-                anchorPane.getChildren().remove( firstLock5);
-                level5Open =true;
-            }
         }
     }
 
@@ -89,6 +73,28 @@ public class Controller {
         if(level5Open){
             //викликати наступний рівень
 
+        }
+    }
+
+    public void isWin(int level){
+        if(level==1 && m.logic.winning){
+            anchorPane.getChildren().remove( firstLock2);
+            level2Open =true;
+        }else{
+            if(level==2 && m.logic.winning){
+                anchorPane.getChildren().remove( firstLock3);
+                level3Open =true;
+            }else{
+                if(level==3 && m.logic.winning){
+                    anchorPane.getChildren().remove( firstLock4);
+                    level4Open =true;
+                }else{
+                    if(level==4 && m.logic.winning){
+                        anchorPane.getChildren().remove( firstLock5);
+                        level5Open =true;
+                    }
+                }
+            }
         }
     }
 
