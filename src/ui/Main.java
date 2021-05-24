@@ -67,20 +67,13 @@ public class Main extends Application {
         // myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
-            myStage.setResizable(true);
+        myStage.setResizable(false);
 
         myStage.setOnCloseRequest(event -> Platform.exit());
-        double width = 400;
-        double height = 500;
-        if (level >= 4) {
-            width = (level - 4) * 80 + 400;
-            height = (level - 4) * 80 + 500;
-        }
-
         logic = new Logic();
 
 
-        Scene myScene = new Scene(rootNode, width, height);
+        Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
         myScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 
         myStage.setScene(myScene);
@@ -99,14 +92,15 @@ public class Main extends Application {
                     if (logic.winning) {
                         level++;
                         if (level >= 4) {
-                            logic.setWidth((level - 4) * 80 + 400);
-                            logic.setHeight((level - 4) * 80 + 500);
+                            logic.setWidth((level - 3) * 80 + 400);
+                            logic.setHeight((level - 3) * 80 + 500);
+                            myStage.setWidth((level - 3) * 80 + 400);
+                            myStage.setHeight((level - 3) * 80 + 500);
                         }
 
 
                         if (level < 6) {
                             logic.amountOfLines = level + 1;
-                            // logic.CELL_SIZE=320/logic.amountOfLines;
                             logic.maxNumber = level * 10 + 10;
                         } else {
                             logic.ice = true;
@@ -200,11 +194,11 @@ public class Main extends Application {
                         gc.setTextAlign(TextAlignment.CENTER);
 
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Бали: " + logic.score, 200, 350);
+                        gc.fillText("Бали: " + logic.score, 200, logic.getHeight() - 150);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
+                        gc.fillText("Час: " + time.getTime() / 1000, 200, logic.getHeight() - 130);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, 200, 390);
+                        gc.fillText("Життя: " + logic.lives, 200, logic.getHeight() - 110);
 
                         String s = String.valueOf(value);
 
@@ -220,11 +214,20 @@ public class Main extends Application {
                                 Image cup = new Image("img/win.png");
                                 gc.drawImage(cup, 120, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
-                                gc.drawImage(pirate, 10, 340, 140, 150);
+                                if (level < 4) {
+                                    gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
+                                } else {
+                                    gc.drawImage(pirate, 10, logic.getHeight() - 200, 140, 150);
+                                }
                                 Image words = new Image("img/Word.png");
-                                gc.drawImage(words, 160, 340, 220, 160);
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", 190, 180);
-                                gc.fillText(fraze, 270, 400);
+                                if (level < 4) {
+                                    gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
+                                } else {
+                                    gc.drawImage(words, logic.getWidth() -330, logic.getHeight() - 160, 220, 160);
+                                }
+
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getHeight() - 310, 180);
+                                gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
                                 //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 Button screenshot = new Button("Зберегти рекорд!");
 
@@ -233,7 +236,7 @@ public class Main extends Application {
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 //                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Життя: " + logic.lives, 330, 20);
+                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 170, 20);
 
                             }
                             if (logic.fail) {
