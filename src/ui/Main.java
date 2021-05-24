@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
 
 public class Main extends Application {
 
-    public int level = 1;
+    public int level = 5;
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nодин рівень\n       Скарби вам не знайти!!!";

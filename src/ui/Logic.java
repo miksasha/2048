@@ -113,8 +113,8 @@ public class Logic extends javafx.scene.canvas.Canvas {
         for (int x = 0; x < amountOfLines; x++) {
             for (int y = 0; y < amountOfLines; y++) {
                 Cell cell = cellAt(x, y);
-                if ((x < 2 && cell.number == cellAt(x + 1, y).number) ||
-                        (y < 2) && cell.number == cellAt(x, y + 1).number) {
+                if ((x < 2 && cell.number == cellAt(x + 1, y).number && cell.frozen == cellAt(x + 1, y).frozen) ||
+                        (y < 2) && cell.number == cellAt(x, y + 1).number && cell.frozen == cellAt(x, y + 1).frozen) {
                     return false;
                 }
             }
@@ -206,7 +206,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 }
                 i++;
             }
-            if (num<50) {
+            if (num<40) {
                 list.add(new Cell(num, iced));
             } else {
                 list.add(new Cell(num));
