@@ -26,7 +26,7 @@ public class Main extends Application {
     public int level = 1;
     KTimer time;
     boolean rightHanded = true;
-    String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
+    String fraze = "Ви перемогли\nлише один рівень!\n       Скарби вам не знайти!!!";
 
     public static void main(String[] args) {
         launch(args);
@@ -323,11 +323,19 @@ public class Main extends Application {
                 break;
             }
             case 5: {
-                fraze = "Попереду льодові\nкулі, вам\nїх не пройти!";
+                fraze = "Плавати у \n піратських водах\n погана ідея!";
                 break;
             }
             case 6: {
+                fraze = "Попереду льодові\nкулі, вам\nїх не пройти!";
+                break;
+            }
+            case 7: {
                 fraze = "В цих водах\nмешкає кракен, \nце вас не лякає?";
+                break;
+            }
+            case 8: {
+                fraze = "На острові\n зі скарбом вас\n чекає купа\n  пасток!";
                 break;
             }
         }
