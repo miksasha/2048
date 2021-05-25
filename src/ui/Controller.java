@@ -16,6 +16,8 @@ public class Controller {
     public ImageView lock5;
     public ImageView lock6;
     public ImageView lock7;
+    public ImageView lock8;
+    public ImageView lock9;
     @FXML
     private Button firstButton;
     @FXML
@@ -32,6 +34,8 @@ public class Controller {
     private boolean level5Open =false;
     private boolean level6Open =false;
     private boolean level7Open =false;
+    private boolean level8Open =false;
+    private boolean level9Open =false;
 
     @FXML protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
@@ -79,30 +83,40 @@ public class Controller {
         }
     }
 
-    public void isWin(int level, boolean win)  throws Exception{
-        if(level==1 && win){
-            anchorPane.getChildren().remove( lock2);
-            level2Open =true;
-        }else{
-            if(level==2 && win){
-                anchorPane.getChildren().remove( lock3);
-                level3Open =true;
-            }else{
-                if(level==3 && win){
-                    anchorPane.getChildren().remove( lock4);
-                    level4Open =true;
-                }else{
-                    if(level==4 && win){
-                        anchorPane.getChildren().remove( lock5);
-                        level5Open =true;
-                    }else{
-                        if(level==5 && win){
-                            anchorPane.getChildren().remove( lock6);
-                            level6Open =true;
-                        }else{
-                            if(level==6 && win){
-                                anchorPane.getChildren().remove( lock7);
-                                level7Open =true;
+    public void isWin(int level, boolean win)  throws Exception {
+        if (level == 1 && win) {
+            anchorPane.getChildren().remove(lock2);
+            level2Open = true;
+        } else {
+            if (level == 2 && win) {
+                anchorPane.getChildren().remove(lock3);
+                level3Open = true;
+            } else {
+                if (level == 3 && win) {
+                    anchorPane.getChildren().remove(lock4);
+                    level4Open = true;
+                } else {
+                    if (level == 4 && win) {
+                        anchorPane.getChildren().remove(lock5);
+                        level5Open = true;
+                    } else {
+                        if (level == 5 && win) {
+                            anchorPane.getChildren().remove(lock6);
+                            level6Open = true;
+                        } else {
+                            if (level == 6 && win) {
+                                anchorPane.getChildren().remove(lock7);
+                                level7Open = true;
+                            } else {
+                                if (level == 7 && win) {
+                                    anchorPane.getChildren().remove(lock8);
+                                    level8Open = true;
+                                } else {
+                                    if (level == 8 && win) {
+                                        anchorPane.getChildren().remove(lock9);
+                                        level9Open = true;
+                                    }
+                                }
                             }
                         }
                     }
