@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -19,6 +20,14 @@ public class Controller {
     public ImageView lock8;
     public ImageView lock9;
     public ImageView pirate;
+    public ImageView dialog;
+    @FXML
+    private Label text1;
+    @FXML
+    private Label text2;
+    @FXML
+    private Label text3;
+
     @FXML
     private Button firstButton;
     @FXML
@@ -48,8 +57,12 @@ public class Controller {
     }
 
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
-        // видалення замочка
-       // anchorPane.getChildren().remove( firstLock3);
+
+        anchorPane.getChildren().remove( pirate);
+        anchorPane.getChildren().remove( dialog);
+        anchorPane.getChildren().remove( text1);
+        anchorPane.getChildren().remove( text2);
+        anchorPane.getChildren().remove( text3);
         Stage myStage=new Stage();
         m.levels(myStage);
         myStage.show();
@@ -111,7 +124,7 @@ public class Controller {
         }
     }
     public void onMoveImage(ActionEvent actionEvent) {
-        anchorPane.getChildren().remove(pirate);
+        anchorPane.getChildren().remove(lock2);
     }
 
     public void isWin(int level, boolean win)  throws Exception {

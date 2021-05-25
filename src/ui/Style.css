@@ -9,6 +9,7 @@
     -fx-background-color: rgb(93, 44, 44);
 }
 
+
 .buttons {
     -fx-background-color: transparent;
     -fx-font-size: 16px;
@@ -17,6 +18,13 @@
 
 .buttons:hover {
     -fx-background-color: rgba(182, 20, 22, 0.3);
+}
+
+.pirate{
+
+}
+.pirate:hover {
+    /*-fx-opacity:0;*/
 }
 
 .askButton{
