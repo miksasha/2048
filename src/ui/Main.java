@@ -122,6 +122,7 @@ public class Main extends Application {
 
 
                         speak(level);
+                        speakHappy(level);
                         time.stopTimer();
                         logic.startNewGame();
 
@@ -232,8 +233,9 @@ public class Main extends Application {
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth() / 2, logic.getHeight() - 110);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, logic.getWidth() / 2, logic.getHeight() - 90);
-
+                        gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 15);
                         String s = String.valueOf(value);
 
                         if (value != 0)
@@ -252,7 +254,7 @@ public class Main extends Application {
                                     e.printStackTrace();
                                 }
                                 Image cup = new Image("img/win.png");
-                                gc.drawImage(cup, logic.getWidth() / 2, 15, 150, 150);
+                                gc.drawImage(cup, logic.getWidth()/2-70, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 if (level < 4) {
                                     gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
@@ -266,10 +268,12 @@ public class Main extends Application {
                                     gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
                                 }
 
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
-                                gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
-                                //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
+                                if (level < 4) {
+                                    gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(fraze, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 gc.fillText("Бали: " + logic.score, 70, 20);
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
@@ -277,20 +281,41 @@ public class Main extends Application {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
                             }
-                            if (logic.fail) {
 
+                          if (logic.fail) {
                                 Image image = new Image("img/skull.png");
-                                gc.drawImage(image, 0, 0, 100, 100);
-                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
-                                gc.fillText("Ви втратили одне життя!", 160, 200);
+                                gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
+                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
+                                gc.fillText("Ви втратили одне життя!", logic.getWidth()/2, 220);
+                              Image smilePirate = new Image("img/SmilePirate.png");
+                              gc.drawImage(smilePirate, 10,logic.getHeight() - 160, 140, 150);
+
+                                Image words = new Image("img/Word.png");
+                                if (level < 4) {
+                                    gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
+                                } else {
+                                    gc.drawImage(words, logic.getWidth() -300, logic.getHeight() - 200, 220, 160);
+                                }
+                                 if (level < 4) {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
                             }
                             if (logic.winning || logic.fail) {
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth() / 2, 270);
+                                }
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Shift, щоб почати знову ", 150, 270);
-                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                                gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Enter, щоб продовжити ", 150, 290);
+                                gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth()/2, 290);
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth() / 2, 310);
+                                }
                             }
                         }
                     }
@@ -300,7 +325,6 @@ public class Main extends Application {
     }
 
     private void speak(int level) {
-
         switch (level) {
             case 2: {
                 fraze = "\"Йо-хо!\n  І пляшка рому....\"\n  Ой, ви ще живі?\n  Це не на довго...";
@@ -315,11 +339,52 @@ public class Main extends Application {
                 break;
             }
             case 5: {
-                fraze = "Попереду льодові\nкулі, вам\nїх не пройти!";
+                fraze = "Плавати у \n піратських водах\n погана ідея!";
                 break;
             }
             case 6: {
+                fraze = "Попереду льодові\nкулі, вам\nїх не пройти!";
+                break;
+            }
+            case 7: {
                 fraze = "В цих водах\nмешкає кракен, \nце вас не лякає?";
+                break;
+            }
+            case 8: {
+                fraze = "На острові\n зі скарбом вас\n чекає купа\n  пасток!";
+                break;
+            }
+        }
+    }
+
+    private void speakHappy(int level) {
+        switch (level) {
+            case 2: {
+                fraze = "\"Йо-хо-xo!\n  І пляшка рому....\"\n Тікайте!";
+                break;
+            }
+            case 3: {
+                fraze = " Ніхто не може\n перемогти, \n  злих піратів!";
+                break;
+            }
+            case 4: {
+                fraze = "Ми гроза\n цих морів\n тікайте поки живі!";
+                break;
+            }
+            case 5: {
+                fraze = "Тікайте на сушу \n там вам і місце!";
+                break;
+            }
+            case 6: {
+                fraze = "Якщо ви це\n не можете пройти\n то, що буде далі...\n Ха-ха-ха";
+                break;
+            }
+            case 7: {
+                fraze = "Тільки не плачте\n море не поважає\n слабаків!";
+                break;
+            }
+            case 8: {
+                fraze = "Тікайте поки можете!\n Ха-ха-ха!";
                 break;
             }
         }
