@@ -232,7 +232,8 @@ public class Main extends Application {
                         gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth()/2, logic.getHeight() - 110);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
-
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 15);
                         String s = String.valueOf(value);
 
                         if (value != 0)
