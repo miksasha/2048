@@ -117,15 +117,14 @@
                   <Image url="@../img/dialog.png" />
                </image>
             </ImageView>
-            <Label fx:id="text1" layoutX="122.0" layoutY="182.0" prefHeight="18.0" prefWidth="170.0"  text="Ми вкрали ваші скарби ">
+            <Label fx:id="text1" layoutX="122.0" layoutY="182.0" prefHeight="18.0" prefWidth="170.0" text="Ми вкрали ваші скарби ">
                <font>
                   <Font name="Chiller" size="12.0" />
                </font></Label>
-            <Label fx:id="text2" layoutX="101.0" layoutY="204.0"  text="і сховали на острові! Вам ніколи " />
+            <Label fx:id="text2" layoutX="101.0" layoutY="204.0" text="і сховали на острові! Вам ніколи ">
+               </Label>
             <Label fx:id="text3" layoutX="134.0" layoutY="228.0"  text=" їх не знайти! Ха-ха-ха!">
-               <font>
-                  <Font name="Chiller" size="12.0" />
-               </font></Label>
+               </Label>
             </children></AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="panel" stylesheets="@Style.css" GridPane.rowIndex="1">
         <buttons>
