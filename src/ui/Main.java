@@ -251,7 +251,7 @@ public class Main extends Application {
                                     e.printStackTrace();
                                 }
                                 Image cup = new Image("img/win.png");
-                                gc.drawImage(cup, logic.getWidth()/2, 15, 150, 150);
+                                gc.drawImage(cup, logic.getWidth()/2-70, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 if (level < 4) {
                                     gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
@@ -266,9 +266,11 @@ public class Main extends Application {
                                 }
 
                                 gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
-                                gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
-                                //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-
+                                if (level < 4) {
+                                    gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(fraze, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 gc.fillText("Бали: " + logic.score, 70, 20);
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
@@ -286,10 +288,13 @@ public class Main extends Application {
                             if (logic.winning || logic.fail) {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Shift, щоб почати знову ", 150, 270);
+                                gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth()/2, 270);
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Enter, щоб продовжити ", 150, 290);
+                                gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth()/2, 290);
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                gc.setFill(Color.WHITE);
+                                gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth()/2, 310);
                             }
                         }
                     }
