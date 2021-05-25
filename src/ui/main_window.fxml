@@ -66,12 +66,12 @@
                   <Image url="@../img/zamok.png" />
                </image>
             </ImageView>
-            <Button layoutX="176.0" layoutY="190.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="6 рівень">
+            <Button layoutX="176.0" layoutY="190.0" mnemonicParsing="false" onAction="#onClickSix" styleClass="buttons" stylesheets="@Style.css" text="6 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="15.0" layoutY="144.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="7 рівень">
+            <Button layoutX="15.0" layoutY="144.0" mnemonicParsing="false" onAction="#onClickSeven" styleClass="buttons" stylesheets="@Style.css" text="7 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -86,7 +86,7 @@
                   <Image url="@../img/zamok.png" />
                </image>
             </ImageView>
-            <Button layoutX="195.0" layoutY="103.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="8 рівень">
+            <Button layoutX="195.0" layoutY="103.0" mnemonicParsing="false" onAction="#onClickEight" styleClass="buttons" stylesheets="@Style.css" text="8 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -96,7 +96,7 @@
                   <Image url="@../img/zamok.png" />
                </image>
             </ImageView>
-            <Button layoutX="289.0" layoutY="33.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="9 рівень">
+            <Button layoutX="289.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickNine" styleClass="buttons" stylesheets="@Style.css" text="9 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
