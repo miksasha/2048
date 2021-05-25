@@ -95,19 +95,20 @@ public class Main extends Application {
 
                     if (logic.winning) {
                         level++;
-                        if (level >= 4) {
-                            logic.setWidth((level - 3) * 80 + 400);
-                            logic.setHeight((level - 3) * 80 + 500);
-                            myStage.setWidth((level - 3) * 80 + 400);
-                            myStage.setHeight((level - 3) * 80 + 500);
-                        }
-
-                        if (level < 6) {
+                        if (level <= 6) {
                             logic.amountOfLines = level + 1;
                             logic.maxNumber = level * 10 + 10;
-                        } else {
+                        } else if (level == 7) {
                             logic.ice = true;
-                            logic.amountOfLines = 4;
+                            logic.amountOfLines = 6;
+                            logic.maxNumber = 80;
+                        } else if (level == 8) {
+                            logic.ice = true;
+                            logic.amountOfLines = 7;
+                            logic.maxNumber = 90;
+                        } else {
+                            logic.ice = false;
+                            logic.amountOfLines = 10;
                             logic.maxNumber = 100;
                         }
 
