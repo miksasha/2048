@@ -48,6 +48,7 @@ public class Controller {
     private boolean level7Open =false;
     private boolean level8Open =false;
     private boolean level9Open =false;
+    private Stage myStage=new Stage();
 
     @FXML protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
@@ -65,7 +66,7 @@ public class Controller {
         anchorPane.getChildren().remove( text1);
         anchorPane.getChildren().remove( text2);
         anchorPane.getChildren().remove( text3);
-        Stage myStage=new Stage();
+
 //        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 //            @Override
 //            public void handle(WindowEvent event) {
@@ -73,14 +74,15 @@ public class Controller {
 //                event.consume();
 //            }
 //        });
-        m.levels(myStage);
+        m.levels(myStage,1);
         myStage.show();
 
     }
 
-    public void onClickSecond(ActionEvent actionEvent) {
+    public void onClickSecond(ActionEvent actionEvent) throws Exception {
         if(level2Open){
-            //викликати наступний рівень
+            m.levels(myStage,2);
+            myStage.show();
 
         }
     }
