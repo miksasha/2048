@@ -33,6 +33,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
         winning = false;
         fail = false;
+
         newCellAddingDependOnIce();
         newCellAdding();
     }
@@ -54,6 +55,17 @@ public class Logic extends javafx.scene.canvas.Canvas {
             int index = (int) (Math.random() * list.size());
             Cell empty = list.get(index);
             empty.number = Math.random() * 10 < 9 ? 10 : 20;
+
+        }
+
+    }
+    public void newNotRandomCellAdding(int number) {
+
+        List<Cell> list = freeCells();
+        if (!freeCells().isEmpty()) {
+            int index = (int) (Math.random() * list.size());
+            Cell empty = list.get(index);
+            empty.number = number;
 
         }
 
@@ -200,7 +212,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 num += 10;
                 score += num;
 
-                if (num == maxNumber) {
+                if (num > maxNumber) {
                     winning = true;
 
                 }

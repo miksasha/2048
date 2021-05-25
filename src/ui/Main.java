@@ -85,6 +85,12 @@ public class Main extends Application {
                     if (logic.fail) {
                         logic.lives--;
                     }
+                    if (logic.lives == 0) {
+                        level = 1;
+                        logic.score=0;
+                        logic.amountOfLines = level + 1;
+                        logic.maxNumber = level * 10 + 10;
+                    }
                     time.stopTimer();
                     logic.startNewGame();
                     time.startTimer(00);
@@ -94,42 +100,73 @@ public class Main extends Application {
 
                     if (logic.winning) {
                         level++;
-                        if (level >= 4) {
-                            logic.setWidth((level - 3) * 80 + 400);
-                            logic.setHeight((level - 3) * 80 + 500);
-                            myStage.setWidth((level - 3) * 80 + 400);
-                            myStage.setHeight((level - 3) * 80 + 500);
-                        }
-
-
-                        if (level < 6) {
+                        if (level <= 6) {
                             logic.amountOfLines = level + 1;
                             logic.maxNumber = level * 10 + 10;
-                        } else {
+                        } else if (level == 7) {
                             logic.ice = true;
-                            logic.amountOfLines = 4;
+                            logic.amountOfLines = 6;
+                            logic.maxNumber = 80;
+                        } else if (level == 9) {
+                            logic.ice = true;
+                            logic.amountOfLines = 7;
+                            logic.maxNumber = 90;
+                        } else {
+                            logic.ice = false;
+                            logic.amountOfLines = 10;
                             logic.maxNumber = 100;
                         }
+
+                        if (level >= 4) {
+                            logic.setWidth((logic.amountOfLines - 4) * 80 + 400);
+                            logic.setHeight((logic.amountOfLines - 4) * 80 + 500);
+                            myStage.setWidth((logic.amountOfLines - 4) * 80 + 400);
+                            myStage.setHeight((logic.amountOfLines - 4) * 80 + 500);
+                        }
+
+
                         speak(level);
                         time.stopTimer();
                         logic.startNewGame();
-                        if (logic.maxNumber >= 100) {
-                            logic.maxNumber = 100;
-                        }
+
                         time.startTimer(00);
                     } else {
                         JOptionPane.showMessageDialog(null, "You can't see next level, press SHIFT to play this one one more time");
                     }
                 }
-                if (keyEvent.getCode() == KeyCode.F1) {
-                    logic.CellTen();
-                }
 
                 if (logic.checkIfStepIsNotAvalible() || (!logic.winning && logic.checkIfStepIsNotAvalible())) {
                     logic.fail = true;
+
                 }
-                if (keyEvent.getCode() == KeyCode.F2) {
-                    logic.CellTwenty();
+                if (keyEvent.getCode() == KeyCode.F1) {
+                    logic.CellTen();
+                }
+                if (level >= 1) {
+                    if (keyEvent.getCode() == KeyCode.F2) {
+                        logic.CellTwenty();
+                    }
+                    if (keyEvent.getCode() == KeyCode.F3) {
+                        logic.Celltherty();
+                    }
+                    if (keyEvent.getCode() == KeyCode.F4) {
+                        logic.newNotRandomCellAdding(40);
+                    }
+                    if (keyEvent.getCode() == KeyCode.F5) {
+                        logic.newNotRandomCellAdding(50);
+                    }
+                    if (keyEvent.getCode() == KeyCode.F6) {
+                        logic.newNotRandomCellAdding(60);
+                    }
+                    if (keyEvent.getCode() == KeyCode.F7) {
+                        logic.newNotRandomCellAdding(70);
+                    }
+                    if (keyEvent.getCode() == KeyCode.F8) {
+                        logic.newNotRandomCellAdding(80);
+                    }
+                    if (keyEvent.getCode() == KeyCode.F9) {
+                        logic.newNotRandomCellAdding(90);
+                    }
                 }
                 if (!logic.winning && !logic.fail) {
                     if (rightHanded) {
@@ -161,9 +198,7 @@ public class Main extends Application {
                     }
 
                 }
-                if (keyEvent.getCode() == KeyCode.F3) {
-                    logic.Celltherty();
-                }
+
                 // logic.relocate(330, 390);
             }
         });
@@ -226,7 +261,7 @@ public class Main extends Application {
                                 if (level < 4) {
                                     gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
                                 } else {
-                                    gc.drawImage(words, logic.getWidth() -330, logic.getHeight() - 160, 220, 160);
+                                    gc.drawImage(words, logic.getWidth() - 330, logic.getHeight() - 160, 220, 160);
                                 }
 
                                 gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getHeight() - 310, 180);
