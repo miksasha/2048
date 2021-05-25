@@ -23,6 +23,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
         super(400, 500);
         setFocused(true);
         startNewGame();
+
     }
 
 
