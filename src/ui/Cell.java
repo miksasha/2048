@@ -36,7 +36,8 @@ boolean frozen = false;
             case 70:		return Color.valueOf("3C03F8FF");
             case 80:		return Color.valueOf("714AF3FF");
             case 90:		return Color.valueOf("9C6CE8FF");
-            case 100:		return Color.valueOf("BFAFEAFF");}
+            case 100:		return Color.valueOf("BFAFEAFF");
+            case 110:		return Color.valueOf("BFAFEAFF");}
         }
         switch (number) {
             case 10:		return Color.rgb(238,163,163);
@@ -49,6 +50,7 @@ boolean frozen = false;
             case 80:		return Color.rgb(88,5,5);
             case 90:		return Color.rgb(57,2,2);
             case 100:		return Color.rgb(14,1,1);
+            case 110:		return Color.rgb(14,1,1);
         }
         return Color.rgb(205, 193, 180, 1.0); //0xcdc1b4
     }
