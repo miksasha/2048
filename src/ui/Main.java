@@ -22,6 +22,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import javafx.scene.image.Image;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
@@ -61,8 +62,15 @@ public class Main extends Application {
     public void levels(Stage myStage) throws Exception {
         time = new KTimer();
         time.startTimer(00);
-
-        // myStage.setTitle("Chernova+Mykhailenko=2048");
+//        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//            @Override
+//            public void handle(WindowEvent event) {
+//                System.out.println("Stage is closing");
+//                event.consume();
+//            }
+//        });
+        
+         myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
         myStage.setResizable(false);

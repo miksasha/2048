@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Controller {
     @FXML
@@ -64,6 +66,13 @@ public class Controller {
         anchorPane.getChildren().remove( text2);
         anchorPane.getChildren().remove( text3);
         Stage myStage=new Stage();
+//        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//            @Override
+//            public void handle(WindowEvent event) {
+//                System.out.println("Stage is closing");
+//                event.consume();
+//            }
+//        });
         m.levels(myStage);
         myStage.show();
 
