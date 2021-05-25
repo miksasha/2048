@@ -77,7 +77,7 @@ public class Main extends Application {
         myScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 
         myStage.setScene(myScene);
-
+        Controller controller=  new Controller();
         myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -90,8 +90,7 @@ public class Main extends Application {
                     time.startTimer(00);
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-
-
+                  
                     if (logic.winning) {
                         level++;
                         if (level >= 4) {
@@ -100,7 +99,6 @@ public class Main extends Application {
                             myStage.setWidth((level - 3) * 80 + 400);
                             myStage.setHeight((level - 3) * 80 + 500);
                         }
-
 
                         if (level < 6) {
                             logic.amountOfLines = level + 1;
@@ -239,7 +237,7 @@ public class Main extends Application {
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 //                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 170, 20);
+                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 50, 20);
 
                             }
                             if (logic.fail) {
@@ -268,7 +266,7 @@ public class Main extends Application {
 
         switch (level) {
             case 2: {
-                fraze = "Заробляйте монети\nтільки так\nВи знайдете те, що шукали";
+                fraze = "Заробляйте монети\nтільки так\nВи знайдете те,\n що шукали";
                 break;
             }
             case 3: {

@@ -26,42 +26,62 @@
     <children>
         <AnchorPane fx:id="anchorPane" prefHeight="425.0" prefWidth="502.0" styleClass="background" stylesheets="@Style.css">
             <children>
-                <Button fx:id="firstButton" layoutX="411.0" layoutY="335.0" mnemonicParsing="false" onAction="#onClickFirst" styleClass="buttons" text="1 level">
+                <Button fx:id="firstButton" layoutX="411.0" layoutY="335.0" mnemonicParsing="false" onAction="#onClickFirst" styleClass="buttons" text="1 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Button layoutX="43.0" layoutY="311.0" mnemonicParsing="false" onAction="#onClickSecond" styleClass="buttons" text="2 level">
+                <Button layoutX="165.0" layoutY="357.0" mnemonicParsing="false" onAction="#onClickSecond" styleClass="buttons" text="2 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Button layoutX="361.0" layoutY="197.0" mnemonicParsing="false" onAction="#onClickThree" styleClass="buttons" text="3 level">
+                <Button layoutX="14.0" layoutY="304.0" mnemonicParsing="false" onAction="#onClickThree" styleClass="buttons" text="3 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Button layoutX="44.0" layoutY="141.0" mnemonicParsing="false" onAction="#onClickFour" styleClass="buttons" text="4 level">
+                <Button layoutX="391.0" layoutY="197.0" mnemonicParsing="false" onAction="#onClickFour" styleClass="buttons" text="4 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Button layoutX="308.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickFive" styleClass="buttons" text="5 level">
+                <Button layoutX="177.0" layoutY="190.0" mnemonicParsing="false" onAction="#onClickFive" styleClass="buttons" text="5 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <ImageView fx:id="firstLock2" fitHeight="31.0" fitWidth="33.0" layoutX="100.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image  url="@../img/zamok.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="firstLock4" fitHeight="31.0" fitWidth="25.0" layoutX="104.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lock2" fitHeight="31.0" fitWidth="33.0" layoutX="237.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/zamok.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="firstLock3" fitHeight="31.0" fitWidth="25.0" layoutX="421.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lock4" fitHeight="31.0" fitWidth="25.0" layoutX="452.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/zamok.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="firstLock5" fitHeight="31.0" fitWidth="25.0" layoutX="368.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lock3" fitHeight="31.0" fitWidth="25.0" layoutX="85.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/zamok.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lock5" fitHeight="31.0" fitWidth="25.0" layoutX="239.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/zamok.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="14.0" layoutY="143.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="6 рівень">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="307.0" layoutY="36.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@Style.css" text="7 рівень">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="lock6" fitHeight="31.0" fitWidth="25.0" layoutX="85.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/zamok.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lock7" fitHeight="31.0" fitWidth="25.0" layoutX="377.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/zamok.png" />
                </image>
