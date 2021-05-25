@@ -278,23 +278,26 @@ public class Main extends Application {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
                             }
-                            if (logic.fail) {
-
+                          if (logic.fail) {
                                 Image image = new Image("img/skull.png");
-                                gc.drawImage(image, 0, 0, 100, 100);
-                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", 130, 150);
-                                gc.fillText("Ви втратили одне життя!", 160, 200);
+                                gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
+                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
+                                gc.fillText("Ви втратили одне життя!", logic.getWidth()/2, 220);
                             }
                             if (logic.winning || logic.fail) {
-                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                                gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth()/2, 270);
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth() / 2, 270);
+                                }
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
                                 gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth()/2, 290);
-                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                                gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth()/2, 310);
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth() / 2, 310);
+                                }
                             }
                         }
                     }
