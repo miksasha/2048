@@ -123,12 +123,13 @@ public class Main extends Application {
 
 
                         speak(level);
-                        speakHappy(level);
+
                         time.stopTimer();
                         logic.startNewGame();
 
                         time.startTimer(00);
                     } else {
+                        speakHappy(level);
                         JOptionPane.showMessageDialog(null, "You can't see next level, press SHIFT to play this one one more time");
                     }
                 }
@@ -286,6 +287,7 @@ public class Main extends Application {
                             }
 
                           if (logic.fail) {
+                          //    speakHappy(level);
                                 Image image = new Image("img/skull.png");
                                 gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
