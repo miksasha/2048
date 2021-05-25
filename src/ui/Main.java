@@ -27,7 +27,7 @@ public class Main extends Application {
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень!\n       Скарби вам не знайти!!!";
-
+    String frazeHappy = "Ха-ха-ха!\n А ви ще\n сподівались\n на перемогу...!";
     public static void main(String[] args) {
         launch(args);
     }
@@ -121,6 +121,7 @@ public class Main extends Application {
 
 
                         speak(level);
+                        speakHappy(level);
                         time.stopTimer();
                         logic.startNewGame();
 
@@ -279,11 +280,26 @@ public class Main extends Application {
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                                 gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
                             }
+
                           if (logic.fail) {
                                 Image image = new Image("img/skull.png");
                                 gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
                                 gc.fillText("Ви втратили одне життя!", logic.getWidth()/2, 220);
+                              Image smilePirate = new Image("img/SmilePirate.png");
+                              gc.drawImage(smilePirate, 10,logic.getHeight() - 160, 140, 150);
+
+                                Image words = new Image("img/Word.png");
+                                if (level < 4) {
+                                    gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
+                                } else {
+                                    gc.drawImage(words, logic.getWidth() -300, logic.getHeight() - 200, 220, 160);
+                                }
+                                 if (level < 4) {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
                             }
                             if (logic.winning || logic.fail) {
                                 if (logic.winning) {
@@ -308,7 +324,6 @@ public class Main extends Application {
     }
 
     private void speak(int level) {
-
         switch (level) {
             case 2: {
                 fraze = "\"Йо-хо!\n  І пляшка рому....\"\n  Ой, ви ще живі?\n  Це не на довго...";
@@ -336,6 +351,39 @@ public class Main extends Application {
             }
             case 8: {
                 fraze = "На острові\n зі скарбом вас\n чекає купа\n  пасток!";
+                break;
+            }
+        }
+    }
+
+    private void speakHappy(int level) {
+        switch (level) {
+            case 2: {
+                fraze = "\"Йо-хо-xo!\n  І пляшка рому....\"\n Тікайте!";
+                break;
+            }
+            case 3: {
+                fraze = " Ніхто не може\n перемогти, \n  злих піратів!";
+                break;
+            }
+            case 4: {
+                fraze = "Ми гроза\n цих морів\n тікайте поки живі!";
+                break;
+            }
+            case 5: {
+                fraze = "Тікайте на сушу \n там вам і місце!";
+                break;
+            }
+            case 6: {
+                fraze = "Якщо ви це\n не можете пройти\n то, що буде далі...\n Ха-ха-ха";
+                break;
+            }
+            case 7: {
+                fraze = "Тільки не плачте\n море не поважає\n слабаків!";
+                break;
+            }
+            case 8: {
+                fraze = "Тікайте поки можете!\n Ха-ха-ха!";
                 break;
             }
         }
