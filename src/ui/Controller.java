@@ -19,7 +19,7 @@ public class Controller {
     @FXML
     private Button firstButton;
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane anchorPane=new AnchorPane();
     @FXML
     private ComboBox handChoice;
 
@@ -45,7 +45,6 @@ public class Controller {
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
         // видалення замочка
        // anchorPane.getChildren().remove( firstLock3);
-
         Stage myStage=new Stage();
         m.levels(myStage);
         myStage.show();
@@ -80,28 +79,28 @@ public class Controller {
         }
     }
 
-    public void isWin(int level){
-        if(level==1 && m.logic.winning){
+    public void isWin(int level, boolean win)  throws Exception{
+        if(level==1 && win){
             anchorPane.getChildren().remove( lock2);
             level2Open =true;
         }else{
-            if(level==2 && m.logic.winning){
+            if(level==2 && win){
                 anchorPane.getChildren().remove( lock3);
                 level3Open =true;
             }else{
-                if(level==3 && m.logic.winning){
+                if(level==3 && win){
                     anchorPane.getChildren().remove( lock4);
                     level4Open =true;
                 }else{
-                    if(level==4 && m.logic.winning){
+                    if(level==4 && win){
                         anchorPane.getChildren().remove( lock5);
                         level5Open =true;
                     }else{
-                        if(level==5 && m.logic.winning){
+                        if(level==5 && win){
                             anchorPane.getChildren().remove( lock6);
                             level6Open =true;
                         }else{
-                            if(level==6 && m.logic.winning){
+                            if(level==6 && win){
                                 anchorPane.getChildren().remove( lock7);
                                 level7Open =true;
                             }

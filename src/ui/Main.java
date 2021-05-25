@@ -16,20 +16,17 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-
 import javafx.scene.image.Image;
-
 
 public class Main extends Application {
 
     public int level = 1;
     KTimer time;
     boolean rightHanded = true;
-    String fraze = "Ви перемогли\nодин рівень\n       Скарби вам не знайти!!!";
+    String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
 
     public static void main(String[] args) {
         launch(args);
@@ -38,7 +35,7 @@ public class Main extends Application {
     public static Stage menu;
     public static Stage instruction;
     public static Parent root;
-    public Logic logic;
+    public Logic logic=new Logic();
 
     @Override
     public void start(Stage myStage) throws Exception {
@@ -47,7 +44,6 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
-        // levels(myStage);
         myStage.show();
         menu = myStage;
     }
@@ -97,23 +93,21 @@ public class Main extends Application {
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
 
-
                     if (logic.winning) {
                         level++;
-                        if (level <= 6) {
+                        if (level >= 4) {
+                            logic.setWidth((level - 3) * 80 + 400);
+                            logic.setHeight((level - 3) * 80 + 500);
+                            myStage.setWidth((level - 3) * 80 + 400);
+                            myStage.setHeight((level - 3) * 80 + 500);
+                        }
+
+                        if (level < 6) {
                             logic.amountOfLines = level + 1;
                             logic.maxNumber = level * 10 + 10;
-                        } else if (level == 7) {
-                            logic.ice = true;
-                            logic.amountOfLines = 6;
-                            logic.maxNumber = 80;
-                        } else if (level == 9) {
-                            logic.ice = true;
-                            logic.amountOfLines = 7;
-                            logic.maxNumber = 90;
                         } else {
-                            logic.ice = false;
-                            logic.amountOfLines = 10;
+                            logic.ice = true;
+                            logic.amountOfLines = 4;
                             logic.maxNumber = 100;
                         }
 
@@ -232,11 +226,11 @@ public class Main extends Application {
                         gc.setTextAlign(TextAlignment.CENTER);
 
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Бали: " + logic.score, 200, logic.getHeight() - 150);
+                        gc.fillText("Бали: " + logic.score, logic.getWidth()/2, logic.getHeight() - 130);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Час: " + time.getTime() / 1000, 200, logic.getHeight() - 130);
+                        gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth()/2, logic.getHeight() - 110);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, 200, logic.getHeight() - 110);
+                        gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
 
                         String s = String.valueOf(value);
 
@@ -249,8 +243,14 @@ public class Main extends Application {
                             gc.setFill(Color.WHITE);
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
                             if (logic.winning) {
+                                Controller controller=  new Controller();
+                                try {
+                                    controller.isWin(level,logic.winning);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                                 Image cup = new Image("img/win.png");
-                                gc.drawImage(cup, 120, 15, 150, 150);
+                                gc.drawImage(cup, logic.getWidth()/2, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 if (level < 4) {
                                     gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
@@ -261,21 +261,19 @@ public class Main extends Application {
                                 if (level < 4) {
                                     gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
                                 } else {
-                                    gc.drawImage(words, logic.getWidth() - 330, logic.getHeight() - 160, 220, 160);
+                                    gc.drawImage(words, logic.getWidth() -300, logic.getHeight() - 200, 220, 160);
                                 }
 
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getHeight() - 310, 180);
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
                                 gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
                                 //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                Button screenshot = new Button("Зберегти рекорд!");
 
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Бали: " + logic.score, 50, 20);
+                                gc.fillText("Бали: " + logic.score, 70, 20);
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 //                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 170, 20);
-
+                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
                             }
                             if (logic.fail) {
 
@@ -303,23 +301,23 @@ public class Main extends Application {
 
         switch (level) {
             case 2: {
-                fraze = "Заробляйте монети\nтільки так\nВи знайдете те, що шукали";
+                fraze = "\"Йо-хо!\n  І пляшка рому....\"\n  Ой, ви ще живі?\n  Це не на довго...";
                 break;
             }
             case 3: {
-                fraze = "3 рівень";
+                fraze = " Ніхто не може\n знайти скарби, \n  що заховали пірати!";
                 break;
             }
             case 4: {
-                fraze = "4 рівень";
+                fraze = "Ви дійсно хочете\n пограбувати капітана?\n Він не знає жалощі...";
                 break;
             }
             case 5: {
-                fraze = "Льодові кулі\nможуть вас зупинити";
+                fraze = "Попереду льодові\nкулі, вам\nїх не пройти!";
                 break;
             }
             case 6: {
-                fraze = "Якщо у вас є\n500 монет\nви зможете пройти";
+                fraze = "В цих водах\nмешкає кракен, \nце вас не лякає?";
                 break;
             }
         }
