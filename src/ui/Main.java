@@ -16,9 +16,11 @@ import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+
 import javafx.scene.image.Image;
 
 public class Main extends Application {
@@ -27,15 +29,14 @@ public class Main extends Application {
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
+    public static Stage menu;
+    public static Stage instruction;
+    public static Parent root;
+    public Logic logic = new Logic();
 
     public static void main(String[] args) {
         launch(args);
     }
-
-    public static Stage menu;
-    public static Stage instruction;
-    public static Parent root;
-    public Logic logic=new Logic();
 
     @Override
     public void start(Stage myStage) throws Exception {
@@ -83,7 +84,7 @@ public class Main extends Application {
                     }
                     if (logic.lives == 0) {
                         level = 1;
-                        logic.score=0;
+                        logic.score = 0;
                         logic.amountOfLines = level + 1;
                         logic.maxNumber = level * 10 + 10;
                     }
@@ -227,11 +228,11 @@ public class Main extends Application {
                         gc.setTextAlign(TextAlignment.CENTER);
 
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Бали: " + logic.score, logic.getWidth()/2, logic.getHeight() - 130);
+                        gc.fillText("Бали: " + logic.score, logic.getWidth() / 2, logic.getHeight() - 130);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth()/2, logic.getHeight() - 110);
+                        gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth() / 2, logic.getHeight() - 110);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
+                        gc.fillText("Життя: " + logic.lives, logic.getWidth() / 2, logic.getHeight() - 90);
 
                         String s = String.valueOf(value);
 
@@ -244,14 +245,14 @@ public class Main extends Application {
                             gc.setFill(Color.WHITE);
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
                             if (logic.winning) {
-                                Controller controller=  new Controller();
+                                Controller controller = new Controller();
                                 try {
-                                    controller.isWin(level,logic.winning);
+                                    controller.isWin(level, logic.winning);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 Image cup = new Image("img/win.png");
-                                gc.drawImage(cup, logic.getWidth()/2, 15, 150, 150);
+                                gc.drawImage(cup, logic.getWidth() / 2, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 if (level < 4) {
                                     gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
@@ -262,10 +263,10 @@ public class Main extends Application {
                                 if (level < 4) {
                                     gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
                                 } else {
-                                    gc.drawImage(words, logic.getWidth() -300, logic.getHeight() - 200, 220, 160);
+                                    gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
                                 }
 
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
                                 gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
                                 //  gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 
