@@ -10,10 +10,12 @@ import javafx.stage.Stage;
 
 public class Controller {
     @FXML
-    public ImageView firstLock2;
-    public ImageView firstLock3;
-    public ImageView firstLock4;
-    public ImageView firstLock5;
+    public ImageView lock2;
+    public ImageView lock3;
+    public ImageView lock4;
+    public ImageView lock5;
+    public ImageView lock6;
+    public ImageView lock7;
     @FXML
     private Button firstButton;
     @FXML
@@ -28,6 +30,8 @@ public class Controller {
     private boolean level3Open =false;
     private boolean level4Open =false;
     private boolean level5Open =false;
+    private boolean level6Open =false;
+    private boolean level7Open =false;
 
     @FXML protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
@@ -78,20 +82,30 @@ public class Controller {
 
     public void isWin(int level){
         if(level==1 && m.logic.winning){
-            anchorPane.getChildren().remove( firstLock2);
+            anchorPane.getChildren().remove( lock2);
             level2Open =true;
         }else{
             if(level==2 && m.logic.winning){
-                anchorPane.getChildren().remove( firstLock3);
+                anchorPane.getChildren().remove( lock3);
                 level3Open =true;
             }else{
                 if(level==3 && m.logic.winning){
-                    anchorPane.getChildren().remove( firstLock4);
+                    anchorPane.getChildren().remove( lock4);
                     level4Open =true;
                 }else{
                     if(level==4 && m.logic.winning){
-                        anchorPane.getChildren().remove( firstLock5);
+                        anchorPane.getChildren().remove( lock5);
                         level5Open =true;
+                    }else{
+                        if(level==5 && m.logic.winning){
+                            anchorPane.getChildren().remove( lock6);
+                            level6Open =true;
+                        }else{
+                            if(level==6 && m.logic.winning){
+                                anchorPane.getChildren().remove( lock7);
+                                level7Open =true;
+                            }
+                        }
                     }
                 }
             }
