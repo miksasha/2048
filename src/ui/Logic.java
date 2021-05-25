@@ -212,7 +212,7 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 num += 10;
                 score += num;
 
-                if (num > maxNumber) {
+                if (num >= maxNumber) {
                     winning = true;
 
                 }

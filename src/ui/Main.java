@@ -29,6 +29,7 @@ public class Main extends Application {
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
+    String frazeHappy = "Ха-ха-ха!\n А ви ще\n сподівались\n на перемогу...!";
     public static Stage menu;
     public static Stage instruction;
     public static Parent root;
@@ -236,6 +237,8 @@ public class Main extends Application {
                         gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 15);
+                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                        gc.fillText("Потрібне число: " + logic.maxNumber, 45, logic.getHeight() - 15);
                         String s = String.valueOf(value);
 
                         if (value != 0)
