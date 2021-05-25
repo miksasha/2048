@@ -18,6 +18,7 @@ public class Controller {
     public ImageView lock7;
     public ImageView lock8;
     public ImageView lock9;
+    public ImageView pirate;
     @FXML
     private Button firstButton;
     @FXML
@@ -81,6 +82,36 @@ public class Controller {
             //викликати наступний рівень
 
         }
+    }
+
+    public void onClickSix(ActionEvent actionEvent) {
+        if(level6Open){
+            //викликати наступний рівень
+
+        }
+    }
+
+    public void onClickSeven(ActionEvent actionEvent) {
+        if(level7Open){
+            //викликати наступний рівень
+
+        }
+    }
+    public void onClickEight(ActionEvent actionEvent) {
+        if(level8Open){
+            //викликати наступний рівень
+
+        }
+    }
+
+    public void onClickNine(ActionEvent actionEvent) {
+        if(level9Open){
+            //викликати наступний рівень
+
+        }
+    }
+    public void onMoveImage(ActionEvent actionEvent) {
+        anchorPane.getChildren().remove(pirate);
     }
 
     public void isWin(int level, boolean win)  throws Exception {
