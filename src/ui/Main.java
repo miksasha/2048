@@ -59,9 +59,10 @@ public class Main extends Application {
         myStage.show();
     }
 
-    public void levels(Stage myStage) throws Exception {
+    public void levels(Stage myStage,int lev) throws Exception {
         time = new KTimer();
         time.startTimer(00);
+        level=lev;
 //        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 //            @Override
 //            public void handle(WindowEvent event) {
@@ -69,7 +70,7 @@ public class Main extends Application {
 //                event.consume();
 //            }
 //        });
-        
+
          myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
@@ -245,9 +246,9 @@ public class Main extends Application {
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 15);
+                        gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 25);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Потрібне число: " + logic.maxNumber, 45, logic.getHeight() - 15);
+                        gc.fillText("Потрібне число: " + logic.maxNumber, 90, logic.getHeight() - 25);
                         String s = String.valueOf(value);
 
                         if (value != 0)
@@ -295,7 +296,6 @@ public class Main extends Application {
                             }
 
                           if (logic.fail) {
-                          //    speakHappy(level);
                                 Image image = new Image("img/skull.png");
                                 gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
