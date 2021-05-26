@@ -20,14 +20,14 @@ public class Controller {
     @FXML
     private ComboBox handChoice;
 
-    public boolean level2Open =false;
-    public boolean level3Open =false;
-    public boolean level4Open =false;
-    public boolean level5Open =false;
-    public boolean level6Open =false;
-    public boolean level7Open =false;
-    public boolean level8Open =false;
-    public boolean level9Open =false;
+    public static boolean level2Open =false;
+    public static boolean level3Open =false;
+    public static boolean level4Open =false;
+    public static boolean level5Open =false;
+    public static boolean level6Open =false;
+    public static boolean level7Open =false;
+    public static boolean level8Open =false;
+    public static boolean level9Open =false;
 
     private static Stage myStageInst;
     private Main m=new Main();

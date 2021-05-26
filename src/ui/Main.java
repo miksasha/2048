@@ -139,7 +139,7 @@ public class Main extends Application {
         rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9, pirate,dialog,text);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
-   
+
         myStage.show();
         menu = myStage;
     }
