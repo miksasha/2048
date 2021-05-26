@@ -47,7 +47,7 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
-        myStage.setOnCloseRequest((new EventHandler<WindowEvent>() {
+        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
                 //метод що залишаэ лише карту
@@ -162,27 +162,34 @@ public class Main extends Application {
                     if (keyEvent.getCode() == KeyCode.F2) {
                         logic.CellTwenty() ;
                     }}
+                    if (level >= 3) {
                     if (keyEvent.getCode() == KeyCode.F3) {
                         logic.Celltherty();
-                    }
+                    }}
+                    if (level >= 4) {
                     if (keyEvent.getCode() == KeyCode.F4) {
                         logic.newNotRandomCellAdding(40);
-                    }
+                    }}
+                    if (level >= 5) {
                     if (keyEvent.getCode() == KeyCode.F5) {
                         logic.newNotRandomCellAdding(50);
-                    }
+                    }}
+                    if (level >= 6) {
                     if (keyEvent.getCode() == KeyCode.F6) {
                         logic.newNotRandomCellAdding(60);
-                    }
+                    }}
+                    if (level >= 7) {
                     if (keyEvent.getCode() == KeyCode.F7) {
                         logic.newNotRandomCellAdding(70);
-                    }
+                    }}
+                    if (level >= 8) {
                     if (keyEvent.getCode() == KeyCode.F8) {
                         logic.newNotRandomCellAdding(80);
-                    }
+                    }}
+                    if (level >= 9) {
                     if (keyEvent.getCode() == KeyCode.F9) {
                         logic.newNotRandomCellAdding(90);
-                    }
+                    }}
                 }
                 if (!logic.winning && !logic.fail) {
                     if (rightHanded) {
