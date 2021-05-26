@@ -139,12 +139,7 @@ public class Main extends Application {
         rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9, pirate,dialog,text);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
-        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                //метод що залишаэ лише карту
-            }
-        });
+   
         myStage.show();
         menu = myStage;
     }
@@ -162,13 +157,6 @@ public class Main extends Application {
         time = new KTimer();
         time.startTimer(00);
         level = lev;
-//        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//            @Override
-//            public void handle(WindowEvent event) {
-//                System.out.println("Stage is closing");
-//                event.consume();
-//            }
-//        });
 
         myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
@@ -319,7 +307,13 @@ public class Main extends Application {
         });
 
         rootNode.getChildren().add(logic);
+        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                //метод що залишаэ лише карту
 
+            }
+        });
         myStage.show();
 
         new AnimationTimer() {

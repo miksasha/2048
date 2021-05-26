@@ -47,7 +47,7 @@ public class Controller {
         m.pirate.setVisible(false);
         m.dialog.setVisible(false);
         m.text.setVisible(false);
-        
+
         m.levels(myStage,1);
         myStage.show();
 
