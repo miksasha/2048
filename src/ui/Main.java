@@ -57,10 +57,14 @@ public class Main extends Application {
     private static ImageView iz7;
     private static ImageView iz8;
     private static ImageView iz9;
+    private static ImageView gold;
 
     public static ImageView pirate;
+    public static ImageView pirate2;
     public static ImageView dialog;
+    public static ImageView paper;
     public static Label text;
+    public static Label text2;
 
     public static AudioClip mainMusic;
     public static AudioClip smile;
@@ -144,13 +148,46 @@ public class Main extends Application {
         dialog.setFitHeight(150);
         dialog.setFitWidth(200);
 
+        Image pi = new Image("img/Pirat.png");
+        pirate2 = new ImageView(pi);
+        pirate2.setPreserveRatio(true);
+        pirate2.setX(0);
+        pirate2.setY(249);
+        pirate2.setFitHeight(178);
+        pirate2.setFitWidth(170);
+        pirate2.setVisible(false);
+
+
+        Image g = new Image("img/gold.png");
+        gold = new ImageView(g);
+        gold.setPreserveRatio(true);
+        gold.setX(95);
+        gold.setY(84);
+        gold.setFitHeight(300);
+        gold.setFitWidth(300);
+        gold.setVisible(false);
+
+        Image sms = new Image("img/paper.png");
+        paper = new ImageView(sms);
+        paper.setPreserveRatio(true);
+        paper.setX(240);
+        paper.setY(14);
+        paper.setFitHeight(250);
+        paper.setFitWidth(250);
+        paper.setVisible(false);
+
         text = new Label("   Ми вкрали ваші скарби \nі сховали на острові! Вам ніколи\n             їх не знайти!\n                Ха-ха-ха!");
         text.setLayoutX(112);
         text.setLayoutY(182);
 
+        text2 = new Label("   Ніііі! Як вам це вдалось??? \n       Думаєте це кінець?\n          Ви ще пошкодуєте!");
+        text2.setLayoutX(112);
+        text2.setLayoutY(182);
+        text2.setVisible(false);
+
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog, text);
+        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog,text,pirate2, text2,gold, paper);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
 
@@ -190,6 +227,14 @@ public class Main extends Application {
         AudioClip rrr = new AudioClip(hit.getSource());
         rrr.setVolume(10);
         rrr.play();
+    }
+
+    public void musicWin(){
+        String bip = "src/music/win.wav";
+        Media hit = new Media(Paths.get(bip).toUri().toString());
+        AudioClip allLaugh = new AudioClip(hit.getSource());
+        allLaugh.setVolume(10);
+        allLaugh.play();
     }
 
     public void instruction(Stage myStage) throws IOException {
@@ -495,6 +540,25 @@ public class Main extends Application {
                                 if (level == 8) {
                                     iz9.setVisible(false);
                                     controller.level9Open = true;
+                                }
+                                if (level == 9) {
+
+                                    paper.setVisible(true);
+                                    pirate2.setVisible(true);
+                                    dialog.setVisible(true);
+                                    text2.setVisible(true);
+                                    pirate2.setOnMouseMoved(e -> {
+                                        pirate2.setX(e.getX());
+                                        rootGr.getChildren().remove(text2);
+                                        rootGr.getChildren().remove(dialog);
+                                        if(pirate2.getX()>498){
+                                            gold.setVisible(true);
+                                            rootGr.getChildren().remove(paper);
+                                            mainMusic.stop();
+                                            musicWin();
+                                        }
+                                    });
+
                                 }
 
                                 Image cup = new Image("img/win.png");
