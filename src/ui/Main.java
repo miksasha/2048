@@ -224,8 +224,12 @@ public class Main extends Application {
 
         myStage.setOnCloseRequest(event -> Platform.exit());
         logic = new Logic(level);
-
-
+        if (level >= 4) {
+            logic.setWidth((logic.amountOfLines - 4) * 80 + 400);
+            logic.setHeight((logic.amountOfLines - 4) * 80 + 500);
+            myStage.setWidth((logic.amountOfLines - 4) * 80 + 400);
+            myStage.setHeight((logic.amountOfLines - 4) * 80 + 500);
+        }
         Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
         myScene.getStylesheets().add(getClass().getResource("design.css").toExternalForm());
 
