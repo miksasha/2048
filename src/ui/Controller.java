@@ -60,10 +60,10 @@ public class Controller {
         }
     }
 
-    public void onClickThree(ActionEvent actionEvent) {
+    public void onClickThree(ActionEvent actionEvent) throws Exception {
         if(level3Open){
-            //викликати наступний рівень
-
+            m.levels(myStage,3);
+            myStage.show();
         }
     }
 
