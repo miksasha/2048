@@ -5,10 +5,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
+import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.chart.LineChart;
@@ -26,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 import javafx.scene.media.AudioClip;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.File;
@@ -162,7 +160,7 @@ public class Main extends Application {
         menu = myStage;
     }
 
-    public void musicLaugh(){
+    public void musicLaugh() {
         String bip = "src/music/laugh.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
         AudioClip smile = new AudioClip(hit.getSource());
@@ -170,7 +168,7 @@ public class Main extends Application {
         smile.play();
     }
 
-    public void music(){
+    public void music() {
         String bip = "src/music/mus.mp3";
         Media hit = new Media(Paths.get(bip).toUri().toString());
         mainMusic = new AudioClip(hit.getSource());
@@ -178,14 +176,15 @@ public class Main extends Application {
         mainMusic.play();
     }
 
-    public void musicAllLaugh(){
+    public void musicAllLaugh() {
         String bip = "src/music/allL.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
         AudioClip allLaugh = new AudioClip(hit.getSource());
         allLaugh.setVolume(10);
         allLaugh.play();
     }
-    public void musicRRR(){
+
+    public void musicRRR() {
         String bip = "src/music/rrr.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
         AudioClip rrr = new AudioClip(hit.getSource());
@@ -411,6 +410,9 @@ public class Main extends Application {
             @Override
             public void handle(WindowEvent event) {
                 //метод що залишаэ лише карту
+
+//                myStage.setScene(null);
+//                myStage.close();
 
             }
         });
