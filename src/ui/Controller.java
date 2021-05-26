@@ -12,15 +12,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class Controller {
-    @FXML
-    public ImageView pirate;
-    public ImageView dialog;
-    @FXML
-    private Label text1;
-    @FXML
-    private Label text2;
-    @FXML
-    private Label text3;
 
     @FXML
     private Button firstButton;
@@ -53,12 +44,10 @@ public class Controller {
 
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
 
-        anchorPane.getChildren().remove( pirate);
-        anchorPane.getChildren().remove( dialog);
-        anchorPane.getChildren().remove( text1);
-        anchorPane.getChildren().remove( text2);
-        anchorPane.getChildren().remove( text3);
-
+        m.pirate.setVisible(false);
+        m.dialog.setVisible(false);
+        m.text.setVisible(false);
+        
         m.levels(myStage,1);
         myStage.show();
 

@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -45,6 +46,10 @@ public class Main extends Application {
     private static ImageView iz7;
     private static ImageView iz8;
     private static ImageView iz9;
+
+    public static ImageView pirate;
+    public static ImageView dialog;
+    public static Label text;
 
     public static void main(String[] args) {
         launch(args);
@@ -109,9 +114,29 @@ public class Main extends Application {
         iz9.setFitHeight(31);
         iz9.setFitWidth(30);
 
+        Image p = new Image("img/SmilePirate.png");
+        pirate = new ImageView(p);
+        pirate.setPreserveRatio(true);
+        pirate.setX(0);
+        pirate.setY(249);
+        pirate.setFitHeight(178);
+        pirate.setFitWidth(170);
+
+        Image d = new Image("img/dialog.png");
+        dialog = new ImageView(d);
+        dialog.setPreserveRatio(true);
+        dialog.setX(95);
+        dialog.setY(164);
+        dialog.setFitHeight(150);
+        dialog.setFitWidth(200);
+
+        text=new Label("   Ми вкрали ваші скарби \nі сховали на острові! Вам ніколи\n             їх не знайти!\n                Ха-ха-ха!");
+        text.setLayoutX(112);
+        text.setLayoutY(182);
+
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9);
+        rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9, pirate,dialog,text);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
         myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
