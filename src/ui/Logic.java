@@ -19,8 +19,10 @@ public class Logic extends javafx.scene.canvas.Canvas {
         return allcells;
     }
 
-    public Logic() {
+    public Logic(int level) {
         super(400, 500);
+         amountOfLines = level+1;
+         maxNumber = level*10+10;
         setFocused(true);
         startNewGame();
 

@@ -27,7 +27,7 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
-    public int level = 4;
+    public int level = 1;
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
@@ -35,7 +35,7 @@ public class Main extends Application {
     public static Stage menu;
     public static Stage instruction;
     public static Parent root;
-    public Logic logic = new Logic();
+    public Logic logic = new Logic(level);
 
     private static Group rootGr;
     private static ImageView iz2;
@@ -164,7 +164,7 @@ public class Main extends Application {
         myStage.setResizable(false);
 
         myStage.setOnCloseRequest(event -> Platform.exit());
-        logic = new Logic();
+        logic = new Logic(level);
 
 
         Scene myScene = new Scene(rootNode, logic.getWidth(), logic.getHeight());
