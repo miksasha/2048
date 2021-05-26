@@ -405,9 +405,9 @@ public class Main extends Application {
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Життя: " + logic.lives, logic.getWidth() / 2, logic.getHeight() - 90);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Рівень: " + level, logic.getWidth() - 45, logic.getHeight() - 25);
+                        gc.fillText("Рівень: " + level, logic.getWidth() - 65, logic.getHeight() - 45);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Потрібне число: " + logic.maxNumber, 90, logic.getHeight() - 25);
+                        gc.fillText("Потрібне число: " + logic.maxNumber, 90, logic.getHeight() - 45);
                         String s = String.valueOf(value);
 
                         if (value != 0)
@@ -488,7 +488,7 @@ public class Main extends Application {
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
                                 gc.fillText("Ви втратили одне життя!", logic.getWidth() / 2, 220);
                                 Image smilePirate = new Image("img/SmilePirate.png");
-                                gc.drawImage(smilePirate, 10, logic.getHeight() - 160, 140, 150);
+                                gc.drawImage(smilePirate, 10, logic.getHeight() - 180, 140, 150);
 
                                 Image words = new Image("img/Word.png");
                                 if (level < 4) {
