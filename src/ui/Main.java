@@ -2,14 +2,19 @@ package ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
@@ -19,8 +24,14 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Random;
 
 import javafx.scene.image.Image;
 import javafx.stage.WindowEvent;
@@ -130,13 +141,13 @@ public class Main extends Application {
         dialog.setFitHeight(150);
         dialog.setFitWidth(200);
 
-        text=new Label("   Ми вкрали ваші скарби \nі сховали на острові! Вам ніколи\n             їх не знайти!\n                Ха-ха-ха!");
+        text = new Label("   Ми вкрали ваші скарби \nі сховали на острові! Вам ніколи\n             їх не знайти!\n                Ха-ха-ха!");
         text.setLayoutX(112);
         text.setLayoutY(182);
 
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9, pirate,dialog,text);
+        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog, text);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
 
@@ -151,6 +162,16 @@ public class Main extends Application {
         myStage.setResizable(false);
 
         myStage.show();
+    }
+
+    public static void savePicture(Canvas myStage, String path) {
+        WritableImage image = myStage.snapshot(new SnapshotParameters(), null);
+        File file = new File(path);
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void levels(Stage myStage, int lev) throws Exception {
@@ -234,42 +255,79 @@ public class Main extends Application {
                     logic.fail = true;
 
                 }
+                Random random = new Random();
+
+                if (keyEvent.getCode() == KeyCode.PRINTSCREEN) {
+                    String res = "_";
+                    File f;
+                    File dir = new File("C:\\GameResults");
+                    if (!dir.exists() || !dir.isDirectory()) {
+                        try {
+
+                            Path path = Paths.get("C:\\GameResults");
+
+                            Files.createDirectories(path);
+
+
+                        } catch (IOException e) {
+
+                            System.err.println("Failed to create directory!" + e.getMessage());
+
+                        }
+                    }
+                    do {
+                        for (int i = 0; i < 5; i++) {
+                            res += random.nextInt(10);
+                        }
+                        f = new File("C:\\GameResults\\" + level + "level" + res + ".png");
+
+                    } while (f.exists());
+                    savePicture(logic, "C:\\GameResults\\" + level + "level" + res + ".png");
+                }
                 if (level >= 1) {
                     if (keyEvent.getCode() == KeyCode.F1) {
                         logic.CellTen();
                     }
                     if (level >= 2) {
-                    if (keyEvent.getCode() == KeyCode.F2) {
-                        logic.CellTwenty() ;
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F2) {
+                            logic.CellTwenty();
+                        }
+                    }
                     if (level >= 3) {
-                    if (keyEvent.getCode() == KeyCode.F3) {
-                        logic.Celltherty();
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F3) {
+                            logic.Celltherty();
+                        }
+                    }
                     if (level >= 4) {
-                    if (keyEvent.getCode() == KeyCode.F4) {
-                        logic.newNotRandomCellAdding(40);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F4) {
+                            logic.newNotRandomCellAdding(40);
+                        }
+                    }
                     if (level >= 5) {
-                    if (keyEvent.getCode() == KeyCode.F5) {
-                        logic.newNotRandomCellAdding(50);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F5) {
+                            logic.newNotRandomCellAdding(50);
+                        }
+                    }
                     if (level >= 6) {
-                    if (keyEvent.getCode() == KeyCode.F6) {
-                        logic.newNotRandomCellAdding(60);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F6) {
+                            logic.newNotRandomCellAdding(60);
+                        }
+                    }
                     if (level >= 7) {
-                    if (keyEvent.getCode() == KeyCode.F7) {
-                        logic.newNotRandomCellAdding(70);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F7) {
+                            logic.newNotRandomCellAdding(70);
+                        }
+                    }
                     if (level >= 8) {
-                    if (keyEvent.getCode() == KeyCode.F8) {
-                        logic.newNotRandomCellAdding(80);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F8) {
+                            logic.newNotRandomCellAdding(80);
+                        }
+                    }
                     if (level >= 9) {
-                    if (keyEvent.getCode() == KeyCode.F9) {
-                        logic.newNotRandomCellAdding(90);
-                    }}
+                        if (keyEvent.getCode() == KeyCode.F9) {
+                            logic.newNotRandomCellAdding(90);
+                        }
+                    }
                 }
                 if (!logic.winning && !logic.fail) {
                     if (rightHanded) {
@@ -362,37 +420,37 @@ public class Main extends Application {
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
                             if (logic.winning) {
                                 Controller controller = new Controller();
-                                 if(level==1) {
-                                     iz2.setVisible(false);
-                                     controller.level2Open=true;
-                                 }
-                                if(level==2) {
+                                if (level == 1) {
+                                    iz2.setVisible(false);
+                                    controller.level2Open = true;
+                                }
+                                if (level == 2) {
                                     iz3.setVisible(false);
-                                    controller.level3Open=true;
+                                    controller.level3Open = true;
                                 }
-                                if(level==3) {
+                                if (level == 3) {
                                     iz4.setVisible(false);
-                                    controller.level4Open=true;
+                                    controller.level4Open = true;
                                 }
-                                if(level==4) {
+                                if (level == 4) {
                                     iz5.setVisible(false);
-                                    controller.level5Open=true;
+                                    controller.level5Open = true;
                                 }
-                                if(level==5) {
+                                if (level == 5) {
                                     iz6.setVisible(false);
-                                    controller.level6Open=true;
+                                    controller.level6Open = true;
                                 }
-                                if(level==6) {
+                                if (level == 6) {
                                     iz7.setVisible(false);
-                                    controller.level7Open=true;
+                                    controller.level7Open = true;
                                 }
-                                if(level==7) {
+                                if (level == 7) {
                                     iz8.setVisible(false);
-                                    controller.level8Open=true;
+                                    controller.level8Open = true;
                                 }
-                                if(level==8) {
+                                if (level == 8) {
                                     iz9.setVisible(false);
-                                    controller.level9Open=true;
+                                    controller.level9Open = true;
                                 }
 
                                 Image cup = new Image("img/win.png");
