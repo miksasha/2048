@@ -18,12 +18,14 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
-
+import javafx.scene.media.AudioClip;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.File;
@@ -61,6 +63,9 @@ public class Main extends Application {
     public static ImageView pirate;
     public static ImageView dialog;
     public static Label text;
+
+    public static AudioClip mainMusic;
+    public static AudioClip smile;
 
     public static void main(String[] args) {
         launch(args);
@@ -152,7 +157,40 @@ public class Main extends Application {
         myStage.setResizable(false);
 
         myStage.show();
+        music();
+
         menu = myStage;
+    }
+
+    public void musicLaugh(){
+        String bip = "src/music/laugh.wav";
+        Media hit = new Media(Paths.get(bip).toUri().toString());
+        AudioClip smile = new AudioClip(hit.getSource());
+        smile.setVolume(10);
+        smile.play();
+    }
+
+    public void music(){
+        String bip = "src/music/mus.mp3";
+        Media hit = new Media(Paths.get(bip).toUri().toString());
+        mainMusic = new AudioClip(hit.getSource());
+        mainMusic.setVolume(10);
+        mainMusic.play();
+    }
+
+    public void musicAllLaugh(){
+        String bip = "src/music/allL.wav";
+        Media hit = new Media(Paths.get(bip).toUri().toString());
+        AudioClip allLaugh = new AudioClip(hit.getSource());
+        allLaugh.setVolume(10);
+        allLaugh.play();
+    }
+    public void musicRRR(){
+        String bip = "src/music/rrr.wav";
+        Media hit = new Media(Paths.get(bip).toUri().toString());
+        AudioClip rrr = new AudioClip(hit.getSource());
+        rrr.setVolume(10);
+        rrr.play();
     }
 
     public void instruction(Stage myStage) throws IOException {
@@ -483,6 +521,7 @@ public class Main extends Application {
                             }
 
                             if (logic.fail) {
+
                                 Image image = new Image("img/skull.png");
                                 gc.drawImage(image, logic.getWidth() / 2 - 70, 15, 150, 150);
                                 gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);

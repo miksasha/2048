@@ -51,12 +51,19 @@ public class Controller {
         m.levels(myStage,1);
         myStage.show();
 
+        m.mainMusic.stop();
+        m.musicLaugh();
+        m.mainMusic.play();
     }
 
     public void onClickSecond(ActionEvent actionEvent) throws Exception {
         if(level2Open){
             m.levels(myStage,2);
             myStage.show();
+
+            m.mainMusic.stop();
+            m.musicAllLaugh();
+            m.mainMusic.play();
         }
     }
 
@@ -64,47 +71,75 @@ public class Controller {
         if(level3Open){
             m.levels(myStage,3);
             myStage.show();
+
+            m.mainMusic.stop();
+            m.musicLaugh();
+            m.mainMusic.play();
         }
     }
 
-    public void onClickFour(ActionEvent actionEvent) {
+    public void onClickFour(ActionEvent actionEvent) throws Exception {
         if(level4Open){
-            //викликати наступний рівень
+            m.levels(myStage,4);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicAllLaugh();
+            m.mainMusic.play();
         }
     }
 
-    public void onClickFive(ActionEvent actionEvent) {
+    public void onClickFive(ActionEvent actionEvent) throws Exception {
         if(level5Open){
-            //викликати наступний рівень
+            m.levels(myStage,5);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicRRR();
+            m.mainMusic.play();
         }
     }
 
-    public void onClickSix(ActionEvent actionEvent) {
+    public void onClickSix(ActionEvent actionEvent) throws Exception {
         if(level6Open){
-            //викликати наступний рівень
+            m.levels(myStage,6);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicRRR();
+            m.mainMusic.play();
         }
     }
 
-    public void onClickSeven(ActionEvent actionEvent) {
+    public void onClickSeven(ActionEvent actionEvent) throws Exception {
         if(level7Open){
-            //викликати наступний рівень
+            m.levels(myStage,7);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicRRR();
+            m.mainMusic.play();
         }
     }
-    public void onClickEight(ActionEvent actionEvent) {
+    public void onClickEight(ActionEvent actionEvent) throws Exception {
         if(level8Open){
-            //викликати наступний рівень
+            m.levels(myStage,8);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicRRR();
+            m.mainMusic.play();
         }
     }
 
-    public void onClickNine(ActionEvent actionEvent) {
+    public void onClickNine(ActionEvent actionEvent) throws Exception {
         if(level9Open){
-            //викликати наступний рівень
+            m.levels(myStage,9);
+            myStage.show();
 
+            m.mainMusic.stop();
+            m.musicRRR();
+            m.mainMusic.play();
         }
     }
 
