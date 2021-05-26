@@ -47,26 +47,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <ImageView fx:id="lock2" fitHeight="31.0" fitWidth="33.0" layoutX="237.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lock4" fitHeight="31.0" fitWidth="25.0" layoutX="266.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lock3" fitHeight="31.0" fitWidth="25.0" layoutX="85.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lock5" fitHeight="31.0" fitWidth="25.0" layoutX="451.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
             <Button layoutX="176.0" layoutY="190.0" mnemonicParsing="false" onAction="#onClickSix" styleClass="buttons" stylesheets="@Style.css" text="6 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -77,36 +57,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="lock6" fitHeight="31.0" fitWidth="25.0" layoutX="248.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lock7" fitHeight="31.0" fitWidth="25.0" layoutX="85.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
             <Button layoutX="195.0" layoutY="103.0" mnemonicParsing="false" onAction="#onClickEight" styleClass="buttons" stylesheets="@Style.css" text="8 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="lock8" fitHeight="31.0" fitWidth="25.0" layoutX="266.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
             <Button layoutX="289.0" layoutY="33.0" mnemonicParsing="false" onAction="#onClickNine" styleClass="buttons" stylesheets="@Style.css" text="9 рівень">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="lock9" fitHeight="31.0" fitWidth="25.0" layoutX="360.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/zamok.png" />
-               </image>
-            </ImageView>
             <ImageView fx:id="pirate" fitHeight="178.0" fitWidth="170.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true" styleClass="pirate">
                <image>
                   <Image url="@../img/SmilePirate.png" />
@@ -123,7 +83,7 @@
                </font></Label>
             <Label fx:id="text2" layoutX="101.0" layoutY="204.0" text="і сховали на острові! Вам ніколи ">
                </Label>
-            <Label fx:id="text3" layoutX="134.0" layoutY="228.0"  text=" їх не знайти! Ха-ха-ха!">
+            <Label fx:id="text3" layoutX="134.0" layoutY="228.0" text=" їх не знайти! Ха-ха-ха!">
                </Label>
             </children></AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="panel" stylesheets="@Style.css" GridPane.rowIndex="1">

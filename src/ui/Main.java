@@ -2,12 +2,13 @@ package ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
@@ -18,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 import javafx.scene.image.Image;
@@ -36,16 +36,83 @@ public class Main extends Application {
     public static Parent root;
     public Logic logic = new Logic();
 
+    private static Group rootGr;
+    private static ImageView iz2;
+    private static ImageView iz3;
+    private static ImageView iz4;
+    private static ImageView iz5;
+    private static ImageView iz6;
+    private static ImageView iz7;
+    private static ImageView iz8;
+    private static ImageView iz9;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage myStage) throws Exception {
+        Image zamok = new Image("img/zamok.png");
+        iz2 = new ImageView(zamok);
+        iz2.setPreserveRatio(true);
+        iz2.setX(237);
+        iz2.setY(335);
+        iz2.setFitHeight(31);
+        iz2.setFitWidth(30);
+
+        iz3 = new ImageView(zamok);
+        iz3.setPreserveRatio(true);
+        iz3.setX(85);
+        iz3.setY(279);
+        iz3.setFitHeight(31);
+        iz3.setFitWidth(30);
+
+        iz4 = new ImageView(zamok);
+        iz4.setPreserveRatio(true);
+        iz4.setX(266);
+        iz4.setY(228);
+        iz4.setFitHeight(31);
+        iz4.setFitWidth(30);
+
+        iz5 = new ImageView(zamok);
+        iz5.setPreserveRatio(true);
+        iz5.setX(451);
+        iz5.setY(174);
+        iz5.setFitHeight(31);
+        iz5.setFitWidth(30);
+
+        iz6 = new ImageView(zamok);
+        iz6.setPreserveRatio(true);
+        iz6.setX(248);
+        iz6.setY(166);
+        iz6.setFitHeight(31);
+        iz6.setFitWidth(30);
+
+        iz7 = new ImageView(zamok);
+        iz7.setPreserveRatio(true);
+        iz7.setX(85);
+        iz7.setY(128);
+        iz7.setFitHeight(31);
+        iz7.setFitWidth(30);
+
+        iz8 = new ImageView(zamok);
+        iz8.setPreserveRatio(true);
+        iz8.setX(266);
+        iz8.setY(81);
+        iz8.setFitHeight(31);
+        iz8.setFitWidth(30);
+
+        iz9 = new ImageView(zamok);
+        iz9.setPreserveRatio(true);
+        iz9.setX(360);
+        iz9.setY(14);
+        iz9.setFitHeight(31);
+        iz9.setFitWidth(30);
 
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        myStage.setScene(new Scene(root, 500, 475));
+        rootGr = new Group(root, iz2,iz3,iz4,iz5,iz6,iz7,iz8,iz9);
+        myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
         myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -276,11 +343,39 @@ public class Main extends Application {
                             gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
                             if (logic.winning) {
                                 Controller controller = new Controller();
-                                try {
-                                    controller.isWin(level, logic.winning);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
+                                 if(level==1) {
+                                     iz2.setVisible(false);
+                                     controller.level2Open=true;
+                                 }
+                                if(level==2) {
+                                    iz3.setVisible(false);
+                                    controller.level3Open=true;
                                 }
+                                if(level==3) {
+                                    iz4.setVisible(false);
+                                    controller.level4Open=true;
+                                }
+                                if(level==4) {
+                                    iz5.setVisible(false);
+                                    controller.level5Open=true;
+                                }
+                                if(level==5) {
+                                    iz6.setVisible(false);
+                                    controller.level6Open=true;
+                                }
+                                if(level==6) {
+                                    iz7.setVisible(false);
+                                    controller.level7Open=true;
+                                }
+                                if(level==7) {
+                                    iz8.setVisible(false);
+                                    controller.level8Open=true;
+                                }
+                                if(level==8) {
+                                    iz9.setVisible(false);
+                                    controller.level9Open=true;
+                                }
+
                                 Image cup = new Image("img/win.png");
                                 gc.drawImage(cup, logic.getWidth() / 2 - 70, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
