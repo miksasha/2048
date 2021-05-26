@@ -26,7 +26,7 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
-    public int level = 1;
+    public int level = 4;
     KTimer time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
@@ -47,6 +47,12 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
+        myStage.setOnCloseRequest((new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                //метод що залишаэ лише карту
+            }
+        });
         myStage.show();
         menu = myStage;
     }
@@ -56,13 +62,14 @@ public class Main extends Application {
         myStage.setTitle("Chernova+Mykhailenko=2048");
         myStage.setScene(new Scene(root, 500, 475));
         myStage.setResizable(false);
+
         myStage.show();
     }
 
-    public void levels(Stage myStage,int lev) throws Exception {
+    public void levels(Stage myStage, int lev) throws Exception {
         time = new KTimer();
         time.startTimer(00);
-        level=lev;
+        level = lev;
 //        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 //            @Override
 //            public void handle(WindowEvent event) {
@@ -71,7 +78,7 @@ public class Main extends Application {
 //            }
 //        });
 
-         myStage.setTitle("Chernova+Mykhailenko=2048");
+        myStage.setTitle("Chernova+Mykhailenko=2048");
         FlowPane rootNode = new FlowPane();
 
         myStage.setResizable(false);
@@ -147,13 +154,14 @@ public class Main extends Application {
                     logic.fail = true;
 
                 }
-                if (keyEvent.getCode() == KeyCode.F1) {
-                    logic.CellTen();
-                }
                 if (level >= 1) {
-                    if (keyEvent.getCode() == KeyCode.F2) {
-                        logic.CellTwenty();
+                    if (keyEvent.getCode() == KeyCode.F1) {
+                        logic.CellTen();
                     }
+                    if (level >= 2) {
+                    if (keyEvent.getCode() == KeyCode.F2) {
+                        logic.CellTwenty() ;
+                    }}
                     if (keyEvent.getCode() == KeyCode.F3) {
                         logic.Celltherty();
                     }
@@ -244,9 +252,9 @@ public class Main extends Application {
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Час: " + time.getTime() / 1000, logic.getWidth() / 2, logic.getHeight() - 110);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, logic.getWidth()/2, logic.getHeight() - 90);
+                        gc.fillText("Життя: " + logic.lives, logic.getWidth() / 2, logic.getHeight() - 90);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Рівень: " + level, logic.getWidth()-45, logic.getHeight() - 25);
+                        gc.fillText("Рівень: " + level, logic.getWidth() - 45, logic.getHeight() - 25);
                         gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
                         gc.fillText("Потрібне число: " + logic.maxNumber, 90, logic.getHeight() - 25);
                         String s = String.valueOf(value);
@@ -267,7 +275,7 @@ public class Main extends Application {
                                     e.printStackTrace();
                                 }
                                 Image cup = new Image("img/win.png");
-                                gc.drawImage(cup, logic.getWidth()/2-70, 15, 150, 150);
+                                gc.drawImage(cup, logic.getWidth() / 2 - 70, 15, 150, 150);
                                 Image pirate = new Image("img/Pirat.png");
                                 if (level < 4) {
                                     gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
@@ -281,7 +289,7 @@ public class Main extends Application {
                                     gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
                                 }
 
-                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
                                 if (level < 4) {
                                     gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
                                 } else {
@@ -295,21 +303,21 @@ public class Main extends Application {
                                 gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
                             }
 
-                          if (logic.fail) {
+                            if (logic.fail) {
                                 Image image = new Image("img/skull.png");
-                                gc.drawImage(image, logic.getWidth()/2-70, 15, 150, 150);
-                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth()/2, 180);
-                                gc.fillText("Ви втратили одне життя!", logic.getWidth()/2, 220);
-                              Image smilePirate = new Image("img/SmilePirate.png");
-                              gc.drawImage(smilePirate, 10,logic.getHeight() - 160, 140, 150);
+                                gc.drawImage(image, logic.getWidth() / 2 - 70, 15, 150, 150);
+                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
+                                gc.fillText("Ви втратили одне життя!", logic.getWidth() / 2, 220);
+                                Image smilePirate = new Image("img/SmilePirate.png");
+                                gc.drawImage(smilePirate, 10, logic.getHeight() - 160, 140, 150);
 
                                 Image words = new Image("img/Word.png");
                                 if (level < 4) {
                                     gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
                                 } else {
-                                    gc.drawImage(words, logic.getWidth() -300, logic.getHeight() - 200, 220, 160);
+                                    gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
                                 }
-                                 if (level < 4) {
+                                if (level < 4) {
                                     gc.fillText(frazeHappy, logic.getWidth() - 130, logic.getHeight() - 100);
                                 } else {
                                     gc.fillText(frazeHappy, logic.getWidth() - 180, logic.getHeight() - 130);
@@ -323,7 +331,7 @@ public class Main extends Application {
                                 }
                                 gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                 gc.setFill(Color.WHITE);
-                                gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth()/2, 290);
+                                gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth() / 2, 290);
                                 if (logic.winning) {
                                     gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
                                     gc.setFill(Color.WHITE);
