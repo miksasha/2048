@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -16,7 +15,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
@@ -479,8 +477,8 @@ public class Main extends Application {
                     for (int x = 0; x < logic.amountOfLines; x++) {
                         Cell cell = logic.getAllcells()[x + y * logic.amountOfLines];
                         int value = cell.number;
-                        int xOffset = offsetCoors(x);
-                        int yOffset = offsetCoors(y);
+                        int xOffset = changeC(x);
+                        int yOffset = changeC(y);
 
                         gc.setFill(cell.getBackground());
                         gc.fillOval(xOffset, yOffset, logic.CELL_SIZE, logic.CELL_SIZE);
@@ -718,7 +716,7 @@ public class Main extends Application {
         }
     }
 
-    private static int offsetCoors(int arg) {
+    private static int changeC(int arg) {
         return arg * (16 + 64) + 16;
     }
 }
