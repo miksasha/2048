@@ -187,7 +187,7 @@ public class Main extends Application {
 
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog,text,pirate2, text2,gold, paper);
+        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog, text, pirate2, text2, gold, paper);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
 
@@ -229,7 +229,7 @@ public class Main extends Application {
         rrr.play();
     }
 
-    public void musicWin(){
+    public void musicWin() {
         String bip = "src/music/win.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
         AudioClip allLaugh = new AudioClip(hit.getSource());
@@ -455,9 +455,10 @@ public class Main extends Application {
             @Override
             public void handle(WindowEvent event) {
                 //метод що залишаэ лише карту
-
-//                myStage.setScene(null);
-//                myStage.close();
+// get a handle to the stage
+                Stage stage = (Stage)myScene.getWindow();
+                // do what you have to do
+                stage.close();
 
             }
         });
@@ -551,7 +552,7 @@ public class Main extends Application {
                                         pirate2.setX(e.getX());
                                         rootGr.getChildren().remove(text2);
                                         rootGr.getChildren().remove(dialog);
-                                        if(pirate2.getX()>498){
+                                        if (pirate2.getX() > 498) {
                                             gold.setVisible(true);
                                             rootGr.getChildren().remove(paper);
                                             mainMusic.stop();
