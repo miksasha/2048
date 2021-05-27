@@ -37,5 +37,15 @@
             <Image url="@../img/inst5.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="181.0" layoutX="331.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/inst6.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="156.0" layoutX="338.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/inst7.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

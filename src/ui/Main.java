@@ -63,6 +63,7 @@ public class Main extends Application {
     public static ImageView pirate2;
     public static ImageView dialog;
     public static ImageView paper;
+    public static ImageView paperWin;
     public static Label text;
     public static Label text2;
 
@@ -162,7 +163,7 @@ public class Main extends Application {
         gold = new ImageView(g);
         gold.setPreserveRatio(true);
         gold.setX(95);
-        gold.setY(84);
+        gold.setY(144);
         gold.setFitHeight(300);
         gold.setFitWidth(300);
         gold.setVisible(false);
@@ -176,6 +177,15 @@ public class Main extends Application {
         paper.setFitWidth(250);
         paper.setVisible(false);
 
+        Image smsWin = new Image("img/paperWin.png");
+        paperWin = new ImageView(smsWin);
+        paperWin.setPreserveRatio(true);
+        paperWin.setX(140);
+        paperWin.setY(10);
+        paperWin.setFitHeight(200);
+        paperWin.setFitWidth(200);
+        paperWin.setVisible(false);
+
         text = new Label("   Ми вкрали ваші скарби \nі сховали на острові! Вам ніколи\n             їх не знайти!\n                Ха-ха-ха!");
         text.setLayoutX(112);
         text.setLayoutY(182);
@@ -187,7 +197,7 @@ public class Main extends Application {
 
         root = FXMLLoader.load(getClass().getResource("main_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
-        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog, text, pirate2, text2, gold, paper);
+        rootGr = new Group(root, iz2, iz3, iz4, iz5, iz6, iz7, iz8, iz9, pirate, dialog, text, pirate2, text2, gold, paper,paperWin);
         myStage.setScene(new Scene(rootGr, 500, 475));
         myStage.setResizable(false);
 
@@ -501,132 +511,132 @@ public class Main extends Application {
 
                         if (value != 0)
                             gc.fillText(s, xOffset + logic.CELL_SIZE / 2, yOffset + logic.CELL_SIZE / 2 - 2);
-
-                    }
-                }
-                if (logic.winning || logic.fail) {
-                    time.stopTimer();
-                    gc.setFill(Color.ROSYBROWN);
-                    gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
-                    gc.setFill(Color.WHITE);
-                    gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
-                    if (logic.winning) {
-                        Controller controller = new Controller();
-                        if (level == 1) {
-                            iz2.setVisible(false);
-                            controller.level2Open = true;
-                        }
-                        if (level == 2) {
-                            iz3.setVisible(false);
-                            controller.level3Open = true;
-                        }
-                        if (level == 3) {
-                            iz4.setVisible(false);
-                            controller.level4Open = true;
-                        }
-                        if (level == 4) {
-                            iz5.setVisible(false);
-                            controller.level5Open = true;
-                        }
-                        if (level == 5) {
-                            iz6.setVisible(false);
-                            controller.level6Open = true;
-                        }
-                        if (level == 6) {
-                            iz7.setVisible(false);
-                            controller.level7Open = true;
-                        }
-                        if (level == 7) {
-                            iz8.setVisible(false);
-                            controller.level8Open = true;
-                        }
-                        if (level == 8) {
-                            iz9.setVisible(false);
-                            controller.level9Open = true;
-                        }
-                        if (level == 9) {
-
-                            paper.setVisible(true);
-                            pirate2.setVisible(true);
-                            dialog.setVisible(true);
-                            text2.setVisible(true);
-                            pirate2.setOnMouseMoved(e -> {
-                                pirate2.setX(e.getX());
-                                rootGr.getChildren().remove(text2);
-                                rootGr.getChildren().remove(dialog);
-                                if (pirate2.getX() > 498) {
-                                    gold.setVisible(true);
-                                    rootGr.getChildren().remove(paper);
-                                    mainMusic.stop();
-                                    musicWin();
+                        if (logic.winning || logic.fail) {
+                            time.stopTimer();
+                            gc.setFill(Color.ROSYBROWN);
+                            gc.fillRect(0, 0, logic.getWidth(), logic.getHeight());
+                            gc.setFill(Color.WHITE);
+                            gc.setFont(Font.font("Elephant", FontWeight.BOLD, 15));
+                            if (logic.winning) {
+                                Controller controller = new Controller();
+                                if (level == 1) {
+                                    iz2.setVisible(false);
+                                    controller.level2Open = true;
                                 }
-                            });
+                                if (level == 2) {
+                                    iz3.setVisible(false);
+                                    controller.level3Open = true;
+                                }
+                                if (level == 3) {
+                                    iz4.setVisible(false);
+                                    controller.level4Open = true;
+                                }
+                                if (level == 4) {
+                                    iz5.setVisible(false);
+                                    controller.level5Open = true;
+                                }
+                                if (level == 5) {
+                                    iz6.setVisible(false);
+                                    controller.level6Open = true;
+                                }
+                                if (level == 6) {
+                                    iz7.setVisible(false);
+                                    controller.level7Open = true;
+                                }
+                                if (level == 7) {
+                                    iz8.setVisible(false);
+                                    controller.level8Open = true;
+                                }
+                                if (level == 8) {
+                                    iz9.setVisible(false);
+                                    controller.level9Open = true;
+                                }
+                                if (level == 9) {
 
-                        }
+                                    paper.setVisible(true);
+                                    pirate2.setVisible(true);
+                                    dialog.setVisible(true);
+                                    text2.setVisible(true);
+                                    pirate2.setOnMouseMoved(e -> {
+                                        pirate2.setX(e.getX());
+                                        rootGr.getChildren().remove(text2);
+                                        rootGr.getChildren().remove(dialog);
+                                        if (pirate2.getX() > 498) {
+                                            gold.setVisible(true);
+                                            paperWin.setVisible(true);
+                                            rootGr.getChildren().remove(paper);
+                                            mainMusic.stop();
+                                            musicWin();
+                                        }
+                                    });
 
-                        Image cup = new Image("img/win.png");
-                        gc.drawImage(cup, logic.getWidth() / 2 - 70, 15, 150, 150);
-                        Image pirate = new Image("img/Pirat.png");
-                        if (level < 4) {
-                            gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
-                        } else {
-                            gc.drawImage(pirate, 10, logic.getHeight() - 200, 140, 150);
-                        }
-                        Image words = new Image("img/Word.png");
-                        if (level < 4) {
-                            gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
-                        } else {
-                            gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
-                        }
+                                }
 
-                        gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
-                        if (level < 4) {
-                            gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
-                        } else {
-                            gc.fillText(fraze, logic.getWidth() - 180, logic.getHeight() - 130);
-                        }
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Бали: " + logic.score, 70, 20);
+                                Image cup = new Image("img/win.png");
+                                gc.drawImage(cup, logic.getWidth() / 2 - 70, 15, 150, 150);
+                                Image pirate = new Image("img/Pirat.png");
+                                if (level < 4) {
+                                    gc.drawImage(pirate, 10, logic.getHeight() - 160, 140, 150);
+                                } else {
+                                    gc.drawImage(pirate, 10, logic.getHeight() - 200, 140, 150);
+                                }
+                                Image words = new Image("img/Word.png");
+                                if (level < 4) {
+                                    gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
+                                } else {
+                                    gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
+                                }
+
+                                gc.fillText("Ви перемогли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
+                                if (level < 4) {
+                                    gc.fillText(fraze, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(fraze, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                                gc.fillText("Бали: " + logic.score, 70, 20);
 //                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
 //                        gc.fillText("Час: " + time.getTime() / 1000, 200, 370);
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
-                        gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
-                    }
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 18));
+                                gc.fillText("Життя: " + logic.lives, logic.getWidth() - 70, 20);
+                            }
 
-                    if (logic.fail) {
+                            if (logic.fail) {
 
-                        Image image = new Image("img/skull.png");
-                        gc.drawImage(image, logic.getWidth() / 2 - 70, 15, 150, 150);
-                        gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
-                        gc.fillText("Ви втратили одне життя!", logic.getWidth() / 2, 220);
-                        Image smilePirate = new Image("img/SmilePirate.png");
-                        gc.drawImage(smilePirate, 10, logic.getHeight() - 180, 140, 150);
+                                Image image = new Image("img/skull.png");
+                                gc.drawImage(image, logic.getWidth() / 2 - 70, 15, 150, 150);
+                                gc.fillText("Ви програли!\n Час: " + time.getTime() / 1000 + " с", logic.getWidth() / 2, 180);
+                                gc.fillText("Ви втратили одне життя!", logic.getWidth() / 2, 220);
+                                Image smilePirate = new Image("img/SmilePirate.png");
+                                gc.drawImage(smilePirate, 10, logic.getHeight() - 180, 140, 150);
 
-                        Image words = new Image("img/Word.png");
-                        if (level < 4) {
-                            gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
-                        } else {
-                            gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
-                        }
-                        if (level < 4) {
-                            gc.fillText(frazeHappy, logic.getWidth() - 130, logic.getHeight() - 100);
-                        } else {
-                            gc.fillText(frazeHappy, logic.getWidth() - 180, logic.getHeight() - 130);
-                        }
-                    }
-                    if (logic.winning || logic.fail) {
-                        if (logic.winning) {
-                            gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                            gc.setFill(Color.WHITE);
-                            gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth() / 2, 270);
-                        }
-                        gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                        gc.setFill(Color.WHITE);
-                        gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth() / 2, 290);
-                        if (logic.winning) {
-                            gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
-                            gc.setFill(Color.WHITE);
-                            gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth() / 2, 310);
+                                Image words = new Image("img/Word.png");
+                                if (level < 4) {
+                                    gc.drawImage(words, logic.getWidth() - 240, logic.getHeight() - 160, 220, 160);
+                                } else {
+                                    gc.drawImage(words, logic.getWidth() - 300, logic.getHeight() - 200, 220, 160);
+                                }
+                                if (level < 4) {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 130, logic.getHeight() - 100);
+                                } else {
+                                    gc.fillText(frazeHappy, logic.getWidth() - 180, logic.getHeight() - 130);
+                                }
+                            }
+                            if (logic.winning || logic.fail) {
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть prt scr, щоб зберегти рекорд!", logic.getWidth() / 2, 270);
+                                }
+                                gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                gc.setFill(Color.WHITE);
+                                gc.fillText("Натисніть Shift, щоб почати знову ", logic.getWidth() / 2, 290);
+                                if (logic.winning) {
+                                    gc.setFont(Font.font("Elephant", FontWeight.LIGHT, 16));
+                                    gc.setFill(Color.WHITE);
+                                    gc.fillText("Натисніть Enter, щоб продовжити ", logic.getWidth() / 2, 310);
+                                }
+                            }
                         }
                     }
                 }
