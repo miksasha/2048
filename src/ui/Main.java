@@ -464,20 +464,10 @@ public class Main extends Application {
         });
 
         rootNode.getChildren().add(logic);
-        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                //метод що залишаэ лише карту
-// get a handle to the stage
-                Stage stage = (Stage)myScene.getWindow();
-                // do what you have to do
-                stage.close();
 
-            }
-        });
         myStage.show();
 
-        new AnimationTimer() {
+        var animationTimer= new AnimationTimer() {
             @Override
             public void handle(long now) {
                 GraphicsContext gc = logic.getGraphicsContext2D();
@@ -645,7 +635,21 @@ public class Main extends Application {
                     }
                 }
             }
-        }.start();
+        };
+        animationTimer.start();
+
+        myStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                animationTimer.stop();
+                //метод що залишаэ лише карту
+// get a handle to the stage
+                Stage stage = (Stage)myScene.getWindow();
+                // do what you have to do
+                stage.close();
+
+            }
+        });
     }
 
     private void speak(int level) {
