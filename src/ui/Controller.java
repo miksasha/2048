@@ -14,8 +14,6 @@ import javafx.stage.WindowEvent;
 public class Controller {
 
     @FXML
-    private Button firstButton;
-    @FXML
     private AnchorPane anchorPane=new AnchorPane();
     @FXML
     private ComboBox handChoice;
@@ -143,47 +141,6 @@ public class Controller {
         }
     }
 
-//    public void isWin(int level, boolean win)  throws Exception {
-//        if (level == 1 && win) {
-//          //  anchorPane.getChildren().remove(lock2);
-//            level2Open = true;
-//        } else {
-//            if (level == 2 && win) {
-//            //    anchorPane.getChildren().remove(lock3);
-//                level3Open = true;
-//            } else {
-//                if (level == 3 && win) {
-//                    anchorPane.getChildren().remove(lock4);
-//                    level4Open = true;
-//                } else {
-//                    if (level == 4 && win) {
-//                        anchorPane.getChildren().remove(lock5);
-//                        level5Open = true;
-//                    } else {
-//                        if (level == 5 && win) {
-//                            anchorPane.getChildren().remove(lock6);
-//                            level6Open = true;
-//                        } else {
-//                            if (level == 6 && win) {
-//                                anchorPane.getChildren().remove(lock7);
-//                                level7Open = true;
-//                            } else {
-//                                if (level == 7 && win) {
-//                                    anchorPane.getChildren().remove(lock8);
-//                                    level8Open = true;
-//                                } else {
-//                                    if (level == 8 && win) {
-//                                        anchorPane.getChildren().remove(lock9);
-//                                        level9Open = true;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     public void onClickAsk(ActionEvent actionEvent) throws Exception {
         m.menu.hide();
