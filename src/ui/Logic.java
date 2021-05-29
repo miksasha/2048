@@ -192,7 +192,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         return undoMatrix(result);
 
     }
-
+    /**
+     * make array[] from array[][]
+     */
     private Cell[] undoMatrix(Cell[][] result) {
         Cell[] res = new Cell[amountOfLines * amountOfLines];
         for (int i = 0; i < amountOfLines; i++) {
@@ -200,7 +202,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
         return res;
     }
-
+    /**
+     * make array[][] from array[]
+     */
     private Cell[][] makeMatrix() {
         Cell[][] res = new Cell[amountOfLines][amountOfLines];
         for (int i = 0; i < res.length; i++) {
@@ -210,7 +214,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         return res;
     }
 
-
+    /**
+     * move given line to the left
+     */
     private Cell[] moveLine(Cell[] oldLine) {
         LinkedList<Cell> list = new LinkedList<>();
         for (int i = 0; i < amountOfLines; i++) {
@@ -232,8 +238,10 @@ public class Logic extends javafx.scene.canvas.Canvas {
             return newLine;
         }
     }
-
-    private Cell[] mergeLine(Cell[] oldLine) {
+    /**
+     * add lines together(merge)
+     */
+    private Cell[] addLinesTogetherLogic(Cell[] oldLine) {
 
         LinkedList<Cell> list = new LinkedList<>();
         for (int i = 0; i < amountOfLines && !oldLine[i].isEmpty(); i++) {
@@ -265,7 +273,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
             return list.toArray(new Cell[amountOfLines]);
         }
     }
-
+    /**
+     * get line from array of cells
+     */
     private Cell[] getLine(int index) {
         Cell[] result = new Cell[amountOfLines];
         for (int i = 0; i < amountOfLines; i++) {
@@ -273,20 +283,21 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
         return result;
     }
-
+    /**
+     * make new line
+     */
     private void setLine(int index, Cell[] re) {
         System.arraycopy(re, 0, allcells, index * amountOfLines, amountOfLines);
     }
+    /**
+     * merge lines to the left
+     */
+    public void mergeLogicleft() {
 
-    public void left() {
-        //TODO reverse method
-//        if (reverse) {
-//            boolean addMoreCells = false;
-//        }
         boolean addMoreCells = false;
         for (int i = 0; i < amountOfLines; i++) {
             Cell[] line = getLine(i);
-            Cell[] merged = mergeLine(moveLine(line));
+            Cell[] merged = addLinesTogetherLogic(moveLine(line));
             setLine(i, merged);
             if (!addMoreCells && !compare(line, merged)) {
                 addMoreCells = true;
@@ -301,26 +312,32 @@ public class Logic extends javafx.scene.canvas.Canvas {
             }
         }
     }
-
-    public void right() {
+    /**
+     * merge lines to the right
+     */
+    public void mergeLogicRight() {
         allcells = turnleft();
         allcells = turnleft();
-        left();
+        mergeLogicleft();
         allcells = turnleft();
         allcells = turnleft();
     }
-
-    public void up() {
+    /**
+     * merge lines  up
+     */
+    public void mergeLogicUp() {
         for (int i = 0; i < 3; i++) {
             allcells = turnleft();
         }
-        left();
+        mergeLogicleft();
         allcells = turnleft();
     }
-
-    public void down() {
+    /**
+     * merge lines down
+     */
+    public void mergeLogicDown() {
         allcells = turnleft();
-        left();
+        mergeLogicleft();
         for (int i = 0; i < 3; i++) {
             allcells = turnleft();
         }

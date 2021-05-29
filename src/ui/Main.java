@@ -446,29 +446,29 @@ public class Main extends Application {
                 if (!logic.winning && !logic.fail) {
                     if (rightHanded) {
                         if (keyEvent.getCode() == KeyCode.UP) {
-                            logic.up();
+                            logic.mergeLogicUp();
                         }
                         if (keyEvent.getCode() == KeyCode.DOWN) {
-                            logic.down();
+                            logic.mergeLogicDown();
                         }
                         if (keyEvent.getCode() == KeyCode.LEFT) {
-                            logic.left();
+                            logic.mergeLogicleft();
                         }
                         if (keyEvent.getCode() == KeyCode.RIGHT) {
-                            logic.right();
+                            logic.mergeLogicRight();
                         }
                     } else {
                         if (keyEvent.getCode() == KeyCode.W) {
-                            logic.up();
+                            logic.mergeLogicUp();
                         }
                         if (keyEvent.getCode() == KeyCode.S) {
-                            logic.down();
+                            logic.mergeLogicDown();
                         }
                         if (keyEvent.getCode() == KeyCode.A) {
-                            logic.left();
+                            logic.mergeLogicleft();
                         }
                         if (keyEvent.getCode() == KeyCode.D) {
-                            logic.right();
+                            logic.mergeLogicRight();
                         }
                     }
 
