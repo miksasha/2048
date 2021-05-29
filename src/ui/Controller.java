@@ -31,7 +31,11 @@ public class Controller {
     private Main m=new Main();
     private Stage myStage=new Stage();
 
-    @FXML protected void actionBox(ActionEvent event ) {
+    @FXML
+    /**
+     * sets the buttons that will work during the game
+     */
+    protected void actionBox(ActionEvent event ) {
         String output = (String) handChoice.getValue();
         if(output.equals("Шульга")){
             m.rightHanded=false;
@@ -40,6 +44,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the first level of the game
+     * restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickFirst(ActionEvent actionEvent) throws Exception {
 
         m.pirate.setVisible(false);
@@ -54,6 +64,12 @@ public class Controller {
         m.mainMusic.play();
     }
 
+    /**
+     *launches the second level of the game
+     * restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickSecond(ActionEvent actionEvent) throws Exception {
         if(level2Open){
             m.levels(myStage,2);
@@ -65,6 +81,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the third level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickThree(ActionEvent actionEvent) throws Exception {
         if(level3Open){
             m.levels(myStage,3);
@@ -76,6 +98,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the fourth level of the game
+     * restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickFour(ActionEvent actionEvent) throws Exception {
         if(level4Open){
             m.levels(myStage,4);
@@ -87,6 +115,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the fifth level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickFive(ActionEvent actionEvent) throws Exception {
         if(level5Open){
             m.levels(myStage,5);
@@ -98,6 +132,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the sixth level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickSix(ActionEvent actionEvent) throws Exception {
         if(level6Open){
             m.levels(myStage,6);
@@ -109,6 +149,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the seventh level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickSeven(ActionEvent actionEvent) throws Exception {
         if(level7Open){
             m.levels(myStage,7);
@@ -119,6 +165,13 @@ public class Controller {
             m.mainMusic.play();
         }
     }
+
+    /**
+     *launches the eighth level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickEight(ActionEvent actionEvent) throws Exception {
         if(level8Open){
             m.levels(myStage,8);
@@ -130,6 +183,12 @@ public class Controller {
         }
     }
 
+    /**
+     *launches the ninth level of the game
+     *restarts music
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickNine(ActionEvent actionEvent) throws Exception {
         if(level9Open){
             m.levels(myStage,9);
@@ -141,12 +200,21 @@ public class Controller {
         }
     }
 
-
+    /**
+     *launches instruction of the game
+     * @param actionEvent
+     * @throws Exception
+     */
     public void onClickAsk(ActionEvent actionEvent) throws Exception {
         m.menu.hide();
         myStageInst=new Stage();
         m.instruction(myStageInst);
     }
+
+    /**
+     *proceeds from the instructions for the game
+     * @param actionEvent
+     */
     public void onClickAskButton(ActionEvent actionEvent) {
         m.menu.show();
         myStageInst.close();
