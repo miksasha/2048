@@ -24,13 +24,15 @@ public class Logic extends javafx.scene.canvas.Canvas {
          amountOfLines = level+1;
          maxNumber = level*10+10;
         setFocused(true);
-        startNewGame();
+        makeNewGame();
 
 
     }
 
-
-    void startNewGame() {
+    /**
+     * begin new game
+     */
+    void makeNewGame() {
         allcells = new Cell[amountOfLines * amountOfLines];
         for (int cell = 0; cell < allcells.length; cell++) {
             allcells[cell] = new Cell();
@@ -41,7 +43,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         newCellAddingDependOnIce();
         newCellAdding();
     }
-
+    /**
+     * add cell with ice from the logic
+     */
     private void newCellAddingDependOnIce() {
 
         List<Cell> list = freeCells();
@@ -51,7 +55,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
             empty.number = Math.random() * 10 < 9 ? 10 : 20;
             empty.frozen = ice;}
     }
-
+    /**
+     * make new cell with ice=false
+     */
     public void newCellAdding() {
 
         List<Cell> list = freeCells();
@@ -63,6 +69,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
 
     }
+    /**
+     * make cell with given number
+     */
     public void newNotRandomCellAdding(int number) {
 
         List<Cell> list = freeCells();
@@ -74,7 +83,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
 
     }
-
+    /**
+     * make cell with number =10
+     */
     public void CellTen() {
         List<Cell> list = freeCells();
         if (!freeCells().isEmpty()) {
@@ -85,7 +96,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
 
     }
-
+    /**
+     * make cell with number =20
+     */
     public void CellTwenty() {
         List<Cell> list = freeCells();
         if (!freeCells().isEmpty()) {
@@ -96,7 +109,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
 
     }
-
+    /**
+     * make cell with number =30
+     */
     public void Celltherty() {
         List<Cell> list = freeCells();
         if (!freeCells().isEmpty()) {
@@ -107,7 +122,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
 
     }
-
+    /**
+     * return all empty cells
+     */
     private List<Cell> freeCells() {
         List<Cell> list = new ArrayList<>(amountOfLines * amountOfLines);
         for (Cell c : allcells)
@@ -115,15 +132,21 @@ public class Logic extends javafx.scene.canvas.Canvas {
                 list.add(c);
         return list;
     }
-
+    /**
+     * check if field is full
+     */
     private boolean isFull() {
         return freeCells().size() == 0;
     }
-
+    /**
+     * return cell at x, y
+     */
     private Cell cellAt(int x, int y) {
         return allcells[x + y * amountOfLines];
     }
-
+    /**
+     * check if there are no available steps
+     */
     boolean checkIfStepIsNotAvalible() {
         if (!isFull()) return false;
         for (int x = 0; x < amountOfLines; x++) {
@@ -137,7 +160,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
         return true;
     }
-
+    /**
+     * compare given lines
+     */
     private boolean compare(Cell[] line1, Cell[] line2) {
         if (line1 == line2) {
             return true;
@@ -153,7 +178,9 @@ public class Logic extends javafx.scene.canvas.Canvas {
         }
         return true;
     }
-
+    /**
+     * turn matrix left on 90 degrees
+     */
     private Cell[] turnleft() {
         Cell[][] tiles = makeMatrix();
         Cell[][] result = new Cell[amountOfLines][amountOfLines];

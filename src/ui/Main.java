@@ -318,7 +318,7 @@ public class Main extends Application {
                         logic.maxNumber = level * 10 + 10;
                     }
                     time.stopTimer();
-                    logic.startNewGame();
+                    logic.makeNewGame();
                     time.startCount(00);
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
@@ -356,7 +356,7 @@ public class Main extends Application {
                         speak(level);
 
                         time.stopTimer();
-                        logic.startNewGame();
+                        logic.makeNewGame();
 
                         time.startCount(00);
                     } else {
