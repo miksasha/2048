@@ -40,7 +40,9 @@ public class KTimer {
         };
         t.scheduleAtFixedRate(tt, 10, 10);
     }
-
+    /**
+     * stop Timer
+     */
     public synchronized void stopTimer() {
         timing = false;
     }
@@ -51,18 +53,10 @@ public class KTimer {
         sspTime.set(split[0] + ":" + split[1] + ":" + (split[2].length() == 1 ? "0" + split[2] : split[2].substring(0, 2)));
     }
 
-    public synchronized void moveToTime(long time) {
-        stopTimer();
-        this.time = time;
-        split = sdf.format(new Date(time)).split(":");
-        sspTime.set(split[0] + ":" + split[1] + ":" + (split[2].length() == 1 ? "0" + split[2] : split[2].substring(0, 2)));
-    }
+
 
     public synchronized long getTime() {
         return time;
     }
 
-    public synchronized SimpleStringProperty getSspTime() {
-        return sspTime;
-    }
 }
