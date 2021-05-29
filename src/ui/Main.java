@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -16,7 +15,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
@@ -207,6 +205,9 @@ public class Main extends Application {
         menu = myStage;
     }
 
+    /**
+     * play music laugh
+     */
     public void musicLaugh() {
         String bip = "src/music/laugh.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
@@ -214,7 +215,9 @@ public class Main extends Application {
         smile.setVolume(10);
         smile.play();
     }
-
+    /**
+     * play music
+     */
     public void music() {
         String bip = "src/music/mus.mp3";
         Media hit = new Media(Paths.get(bip).toUri().toString());
@@ -222,7 +225,9 @@ public class Main extends Application {
         mainMusic.setVolume(10);
         mainMusic.play();
     }
-
+    /**
+     * play music all
+     */
     public void musicAllLaugh() {
         String bip = "src/music/allL.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
@@ -230,7 +235,9 @@ public class Main extends Application {
         allLaugh.setVolume(10);
         allLaugh.play();
     }
-
+    /**
+     * play music rrr
+     */
     public void musicRRR() {
         String bip = "src/music/rrr.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
@@ -238,7 +245,9 @@ public class Main extends Application {
         rrr.setVolume(10);
         rrr.play();
     }
-
+    /**
+     * play music winning
+     */
     public void musicWin() {
         String bip = "src/music/win.wav";
         Media hit = new Media(Paths.get(bip).toUri().toString());
@@ -246,7 +255,9 @@ public class Main extends Application {
         allLaugh.setVolume(10);
         allLaugh.play();
     }
-
+    /**
+     * show instruction
+     */
     public void instruction(Stage myStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("instruction_window.fxml"));
         myStage.setTitle("Chernova+Mykhailenko=2048");
@@ -255,7 +266,9 @@ public class Main extends Application {
 
         myStage.show();
     }
-
+    /**
+     * save picture in directory
+     */
     public static void savePicture(Canvas myStage, String path) {
         WritableImage image = myStage.snapshot(new SnapshotParameters(), null);
         File file = new File(path);
@@ -265,7 +278,9 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
+    /**
+     * open levels
+     */
     public void levels(Stage myStage, int lev) throws Exception {
         time = new KTimer();
         time.startTimer(00);
@@ -479,8 +494,8 @@ public class Main extends Application {
                     for (int x = 0; x < logic.amountOfLines; x++) {
                         Cell cell = logic.getAllcells()[x + y * logic.amountOfLines];
                         int value = cell.number;
-                        int xOffset = offsetCoors(x);
-                        int yOffset = offsetCoors(y);
+                        int xOffset = countOffset(x);
+                        int yOffset = countOffset(y);
 
                         gc.setFill(cell.getBackground());
                         gc.fillOval(xOffset, yOffset, logic.CELL_SIZE, logic.CELL_SIZE);
@@ -651,7 +666,9 @@ public class Main extends Application {
             }
         });
     }
-
+    /**
+     * make fraze
+     */
     private void speak(int level) {
         switch (level) {
             case 2: {
@@ -684,7 +701,9 @@ public class Main extends Application {
             }
         }
     }
-
+    /**
+     * make fraze happy
+     */
     private void speakHappy(int level) {
         switch (level) {
             case 2: {
@@ -717,8 +736,10 @@ public class Main extends Application {
             }
         }
     }
-
-    private static int offsetCoors(int arg) {
+    /**
+     * offsets make
+     */
+    private static int countOffset(int arg) {
         return arg * (16 + 64) + 16;
     }
 }

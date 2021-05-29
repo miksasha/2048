@@ -20,10 +20,15 @@ boolean frozen = false;
         this.number = number;
         this.frozen=frozen;
     }
+    /**
+     * check if cell is empty
+     */
     public boolean isEmpty() {
         return number == 0;
     }
-
+    /**
+     * paint cell depends on its number
+     */
     public Color getBackground() {
         if(frozen==true){
             switch (number) {
@@ -54,7 +59,9 @@ boolean frozen = false;
         }
         return Color.rgb(205, 193, 180, 1.0); //0xcdc1b4
     }
-
+    /**
+     * paint foregrount
+     */
     public Color getForeground() {
         Color foreground;
         if(number < 40) {
