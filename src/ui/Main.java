@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -16,7 +15,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
@@ -39,7 +37,7 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
 
     public int level = 1;
-    KTimer time;
+    TimeCounter time;
     boolean rightHanded = true;
     String fraze = "Ви перемогли\nлише один рівень\n       Скарби вам не знайти!!!";
     String frazeHappy = "Ха-ха-ха!\n А ви ще\n сподівались\n на перемогу...!";
@@ -284,8 +282,8 @@ public class Main extends Application {
      * open levels
      */
     public void levels(Stage myStage, int lev) throws Exception {
-        time = new KTimer();
-        time.startTimer(00);
+        time = new TimeCounter();
+        time.startCount(00);
         level = lev;
 
         myStage.setTitle("Chernova+Mykhailenko=2048");
@@ -321,7 +319,7 @@ public class Main extends Application {
                     }
                     time.stopTimer();
                     logic.startNewGame();
-                    time.startTimer(00);
+                    time.startCount(00);
                 }
                 if (keyEvent.getCode() == KeyCode.ENTER) {
 
@@ -360,7 +358,7 @@ public class Main extends Application {
                         time.stopTimer();
                         logic.startNewGame();
 
-                        time.startTimer(00);
+                        time.startCount(00);
                     } else {
                         speakHappy(level);
                         JOptionPane.showMessageDialog(null, "You can't see next level, press SHIFT to play this one one more time");

@@ -60,7 +60,7 @@ boolean frozen = false;
         return Color.rgb(205, 193, 180, 1.0); //0xcdc1b4
     }
     /**
-     * paint foregrount
+     * paint foreground
      */
     public Color getForeground() {
         Color foreground;
